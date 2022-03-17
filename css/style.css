@@ -1,0 +1,35 @@
+.container {
+  width: 98%;
+  margin: 0 auto;
+  padding: 1%;
+  border: 1px solid black;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.toright {
+  float: right;
+  border: 1px solid black;
+}
+
+.clearfix {
+  clear: both;
+  float: none;
+}
+
+/*CSS for navbar*/
+.menu {
+  line-height: 60px;
+}
+
+.menu ul {
+  list-style-type: none;
+}
+
+.menu ul li {
+  display: inline;
+  padding: 1%;
+  font-weight: bold;
+}
