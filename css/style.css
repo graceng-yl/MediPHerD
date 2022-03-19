@@ -1,3 +1,37 @@
+:root{
+  --c_fontwhite: rgb(255, 255, 255); 
+  --c_fontblack: #2E2E2E;
+  --c_white: #F5F5F5;
+  --c_darkgreen: rgb(109, 137, 99);
+  --c_lgihtgrey: #EFEFEF;
+  --c_grey: #E0E4DF; 
+  --c_darkgrey: #C4C4C4;
+
+  --font_xlarge: 60px;
+  --font_large: 36px;
+  --font_medium: 24px;
+  --font_small: 22px;
+  /* --font_xsmall: 18px; */
+
+  --font: 'Roboto', sans-serif;
+}
+
+/* *{
+  font-family: var(--font);
+}
+h2{
+  font-size: var(--font_xlarge);
+}
+h3{
+  font-size: var(--font_large);
+}
+h4{
+  font-size: var(--font_medium);
+}
+h5{
+  font-size: var(--font_small);
+} */
+
 .container {
   width: 98%;
   margin: 0 auto;
