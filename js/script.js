@@ -1,7 +1,7 @@
 jQuery(document).ready(function(){
 
 	//hide first row operator 
-	jQuery("select[name='advs_operator_1']").hide();
+	jQuery("#advs_operator_1").hide();
 	jQuery("#advs_removequery_1").hide();
 
 	//click on add
@@ -12,10 +12,10 @@ jQuery(document).ready(function(){
 
 		jQuery("#"+prevId).clone().appendTo(".advs").attr('id', 'advs_row_'+currNum); //clone row
 
-		jQuery("select[name='advs_operator_"+prevNum+"']").last().attr('name', 'advs_operator_'+currNum).show(); //chg operator name and show
-		jQuery("select[name='advs_matching_criterion_"+prevNum+"']").last().attr('name', 'advs_matching_criterion_'+currNum); //chg matching criterion name
-		jQuery("select[name='advs_field_"+prevNum+"']").last().attr('name', 'advs_field_'+currNum); //change field name
-		jQuery("input[name='advs_query_"+prevNum+"']").last().attr('name', 'advs_query_'+currNum); //change query name
+		jQuery("select[name='advs_operator[]']").last().attr('id', 'advs_operator_'+currNum).show(); //chg operator name and show
+		// jQuery("select[name='advs_matching_criterion_"+prevNum+"']").last().attr('name', 'advs_matching_criterion_'+currNum); //chg matching criterion name
+		// jQuery("select[name='advs_field_"+prevNum+"']").last().attr('name', 'advs_field_'+currNum); //change field name
+		// jQuery("input[name='advs_query_"+prevNum+"']").last().attr('name', 'advs_query_'+currNum); //change query name
 		jQuery(".advs_addquery").last().attr('id', 'advs_addquery_'+currNum).show(); //change add id and show
 		jQuery(".advs_removequery").last().attr('id', 'advs_removequery_'+currNum).show(); //change remove id and show
 
@@ -29,7 +29,11 @@ jQuery(document).ready(function(){
 		var prevNum = parseInt(currId.split('_')[2])-1;
 
 		jQuery("#"+currId).remove(); //remove last row
-		jQuery("#advs_addquery_"+prevNum).show(); //show previous row add
-		jQuery("#advs_removequery_"+prevNum).show(); //show previous row remove
+		if(prevNum!=1){
+			jQuery("#advs_addquery_"+prevNum).show(); //show previous row add
+			jQuery("#advs_removequery_"+prevNum).show(); //show previous row remove
+		}else{
+			jQuery("#advs_addquery_"+prevNum).show();
+		}
 	});
 });
