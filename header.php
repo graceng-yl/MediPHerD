@@ -42,10 +42,10 @@
             </div>
             <div class="menu text-right">
                 <ul>
-                    <li><a href="../index.php">Home</a></li>
-                    <li><a href="pages/browse.php">Browse</a></li>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="browse.php">Browse</a></li>
                     <li><input type="text"></li>
-                    <li><a href="pages/advsearch.php">Advanced Search</a></li>
+                    <li><a href="advsearch.php">Advanced Search</a></li>
                 </ul>
             </div>
             <div class="clearfix"></div>
