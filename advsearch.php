@@ -9,14 +9,14 @@ include('header.php');
         <table class="advs">
             <tr class="advs_row" id="advs_row_1">
                 <td>
-                    <select name="advs_operator_1">
+                    <select name="advs_operator[]" id="advs_operator_1">
                         <option value="or">OR</option>
                         <option value="and">AND</option>
                         <option value="not">NOT</option>
                     </select>
                 </td>
                 <td>
-                    <select name="advs_matching_criterion_1">
+                    <select name="advs_matching_criterion[]">
                         <option value="=">EXACT</option>
                         <option value="LIKE">CONTAINS</option>
                         <option value="START">START WITH</option>
@@ -24,7 +24,7 @@ include('header.php');
                     </select>
                 </td>
                 <td>
-                    <select name="advs_field_1">
+                    <select name="advs_field[]">
                         <option value="plant_id">ID</option>
                         <option value="plant_name">Name</option>
                         <option value="plant_family">Family</option>
@@ -35,7 +35,7 @@ include('header.php');
                         <option value="plant_chemconst">Chemical constituent</option>
                     </select>
                 </td>
-                <td><input name="advs_query_1" type="text"></td>
+                <td><input name="advs_query[]" type="text"></td>
                 <td><div class="advs_removequery" id="advs_removequery_1">-</div></td>
                 <td><div class="advs_addquery" id="advs_addquery_1">+</div></td>
                 

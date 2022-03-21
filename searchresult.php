@@ -1,21 +1,44 @@
 <?php
 include('header.php');
+//print_r($_POST['advs_operator']);
 
 //fetching advanced search result 
-if(isset($_POST['advs_query_1'])){
-    
+$queryCount = 0;
+$query = "";
+foreach($_POST['advs_query'] as $searchQuery){
+    if($queryCount == 0){
+        $query = "SELECT * FROM plants, materials, materials_relation WHERE (plants.plant_id=materials_relation.plant_id AND materials.mat_id=materials_relation.mat_id) AND (";
+    }else{
+        if($_POST['advs_operator'][$queryCount]=='or'){
+            $query .= " OR ";
+        }elseif($_POST['advs_operator'][$queryCount]=='and'){
+            $query .= " AND ";
+        }elseif($_POST['advs_operator'][$queryCount]=='not'){
+            $query .= " NOT ";
+        }
+    }
+    if($_POST['advs_field'][$queryCount]=='plant_name'){
+        //$query .= "(plant_othernames LIKE '%".$_POST['advs_query'][$queryCount]."%' OR ";
+        $query .= "";
+    }elseif($_POST['advs_field'][$queryCount]=='plant_id'){
+        $query .= "plants.";
+    }
+    $query .= $_POST['advs_field'][$queryCount];
     //if matching criterion is exact and contains
-    if($_POST['advs_matching_criterion_1']=='='){
-        $query = "SELECT * FROM plants WHERE ".$_POST['advs_field_1']." = '".$_POST['advs_query_1']."'";
-    }elseif($_POST['advs_matching_criterion']=='LIKE'){
-        $query = "SELECT * FROM plants WHERE ".$_POST['advs_field_1']." LIKE '%".$_POST['advs_query_1']."%'";
-    }elseif($_POST['advs_matching_criterion']=='START'){
-        $query = "SELECT * FROM plants WHERE ".$_POST['advs_field_1']." LIKE '".$_POST['advs_query_1']."%'";
-    }elseif($_POST['advs_matching_criterion']=='END'){
-        $query = "SELECT * FROM plants WHERE ".$_POST['advs_field_1']." LIKE '%".$_POST['advs_query_1']."'";
+    if($_POST['advs_matching_criterion'][$queryCount]=='='){
+        $query .= "='".$_POST['advs_query'][$queryCount]."' ";
+    }elseif($_POST['advs_matching_criterion'][$queryCount]=='LIKE'){
+        $query .= " LIKE '%".$_POST['advs_query'][$queryCount]."%' ";
+    }elseif($_POST['advs_matching_criterion'][$queryCount]=='START'){
+        $query .= " LIKE '".$_POST['advs_query'][$queryCount]."%' ";
+    }elseif($_POST['advs_matching_criterion'][$queryCount]=='END'){
+        $query .= " LIKE '%".$_POST['advs_query'][$queryCount]."' ";
     }
 
-    if($_POST['advs_field_1']=='plant_name'){
+    // if($_POST['advs_field'][$queryCount]=='plant_name'){
+    //     $query .= ")";
+    // }
+    if($_POST['advs_field'][$queryCount]=='plant_name'){
         $query_othernames = "SELECT plant_othernames FROM plants";
         $result_othernames = mysqli_query($conn, $query_othernames);
         $othernames_array = array();
@@ -29,20 +52,20 @@ if(isset($_POST['advs_query_1'])){
             // echo "<br>";
             $subitem = explode(",", $item['plant_othernames']);
             foreach($subitem as $sub){
-                if($_POST['advs_matching_criterion_1']=='='){
-                    if(strtolower($sub) == strtolower($_POST['advs_query_1'])){
+                if($_POST['advs_matching_criterion'][$queryCount]=='='){
+                    if(strtolower($sub) == strtolower($_POST['advs_query'][$queryCount])){
                         array_push($othernames_matches, [$sub, $item]);
                     }
-                }elseif($_POST['advs_matching_criterion_1']=='LIKE'){
-                    if(strpos(strtolower($sub), strtolower($_POST['advs_query_1'])) !== false){
+                }elseif($_POST['advs_matching_criterion'][$queryCount]=='LIKE'){
+                    if(strpos(strtolower($sub), strtolower($_POST['advs_query'][$queryCount])) !== false){
                         array_push($othernames_matches, [$sub, $item]);
                     }
-                }elseif($_POST['advs_matching_criterion_1']=='START'){
-                    if(strpos(strtolower($sub), strtolower($_POST['advs_query_1'])) !== false && strpos(strtolower($sub), strtolower($_POST['advs_query_1'])) == 0){
+                }elseif($_POST['advs_matching_criterion'][$queryCount]=='START'){
+                    if(strpos(strtolower($sub), strtolower($_POST['advs_query'][$queryCount])) !== false && strpos(strtolower($sub), strtolower($_POST['advs_query'][$queryCount])) == 0){
                         array_push($othernames_matches, [$sub, $item]);
                     }
-                }elseif($_POST['advs_matching_criterion_1']=='END'){
-                    if(strrpos(strtolower($sub), strtolower($_POST['advs_query_1'])) !== false && strrpos(strtolower($sub), strtolower($_POST['advs_query_1'])) == strlen($sub)-strlen($_POST['advs_query_1'])){
+                }elseif($_POST['advs_matching_criterion'][$queryCount]=='END'){
+                    if(strrpos(strtolower($sub), strtolower($_POST['advs_query'])) !== false && strrpos(strtolower($sub), strtolower($_POST['advs_query'][$queryCount])) == strlen($sub)-strlen($_POST['advs_query'][$queryCount])){
                         array_push($othernames_matches, [$sub, $item]);
                     }
                 }
@@ -51,29 +74,28 @@ if(isset($_POST['advs_query_1'])){
         #print_r($othernames_matches);
         $matches_array = array();
         foreach ($othernames_matches as $match) {
-            array_push($matches_array, "plant_othernames = '".$match[1]['plant_othernames']."'");
+            array_push($matches_array, "plant_othernames='".$match[1]['plant_othernames']."'");
         }
-        $query = $query." OR ".implode(" OR ", $matches_array).";";
+        //print_r($matches_array);
+        $query .= " OR ".implode(" OR ", $matches_array);
+        $query .= "";
     }
 
-    if(isset($_POST['advs_operator_1'])){
+    $queryCount++;
+}
 
-    }else{
-        $query = $query.";";
-    }
+$query .= ");";
 
-    echo $query."<br>";
+echo $query."<br>";
+//get result from query, return error if failed
+if(!($result = mysqli_query($conn, $query))){
+    echo "<p>Could not execute query</p>";
+    die(mysqli_error($conn)."</body.</html>");
+}
 
-    //get result from query, return error if failed
-    if(!($result = mysqli_query($conn, $query))){
-        echo "<p>Could not execute query</p>";
-        die(mysqli_error($conn)."</body.</html>");
-    }
-
-    while($row = mysqli_fetch_assoc($result)){
-        //test display, to display particular plant_othernames according to search query, use the name stored in $matches_array perhaps?
-        echo $row['plant_name']."<br>";
-    }
+while($row = mysqli_fetch_assoc($result)){
+    //test display, to display particular plant_othernames according to search query, use the name stored in $matches_array perhaps?
+    echo $row['plant_name']."<br>";
 }
 ?>
 
