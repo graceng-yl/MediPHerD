@@ -1,8 +1,8 @@
 :root{
-  --c_fontwhite: rgb(255, 255, 255); 
+  --c_fontwhite: #ffffff; 
   --c_fontblack: #2E2E2E;
   --c_white: #F5F5F5;
-  --c_darkgreen: rgb(109, 137, 99);
+  --c_darkgreen: #6d8963;
   --c_lgihtgrey: #EFEFEF;
   --c_grey: #E0E4DF; 
   --c_darkgrey: #C4C4C4;
