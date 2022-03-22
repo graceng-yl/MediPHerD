@@ -5,8 +5,8 @@ include('header.php');
 <div class="container">
     <h1>Advanced Search</h1>
 
-    <form method="post" action="searchresult.php">
-        <table class="advs">
+    <form method="post" action="searchresult.php" id="advs_form">
+        <table id="advs">
             <tr class="advs_row" id="advs_row_1">
                 <td>
                     <select name="advs_operator[]" id="advs_operator_1">

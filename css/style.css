@@ -1,3 +1,4 @@
+
 :root {
   --c_fontwhite: rgb(255, 255, 255);
   --c_fontblack: #2e2e2e;
@@ -6,6 +7,7 @@
   --c_lightgrey: #efefef;
   --c_grey: #e0e4df;
   --c_darkgrey: #c4c4c4;
+
 
   --font_xlarge: 60px;
   --font_large: 36px;
