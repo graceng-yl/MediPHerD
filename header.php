@@ -37,20 +37,7 @@
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <script>
-    //press 'enter' key to initiate the simple search
-    $(document).on("keypress", "input", function(e) {
-        if (e.which == 13 && $(this).val() != "") {
-            var inputVal = $(this).val();
-            //alert("You've entered: " + inputVal);
-            $.post('header.php', 'searchinput=' + inputVal, function(response) {
-                alert(response);
-            });
-        } else if (e.which == 13 && $(this).val() == "") {
-            alert("You've entered: nothing");
-        }
-    });
-    </script>
+
 </head>
 
 <body>
