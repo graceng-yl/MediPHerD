@@ -56,14 +56,14 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg justify-content-between" style="background-color: var(--c_darkgreen);">
-            <ul class="navbar-nav mx-auto ">
-                <li class="nav-item my-auto">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item my-auto col-2">
                     <a class="nav-link active" href="index.php">Home</a>
                 </li>
-                <li class="nav-item my-auto">
+                <li class="nav-item my-auto col-3">
                     <a class="nav-link" href="browse.php">Browse Database</a>
                 </li>
-                <li class="nav-item my-auto">
+                <li class="nav-item my-auto col-4">
                     <div class="mx-auto order-0">
                         <a class="navbar-brand" href="index.php">
                             <img src="www/logo.png" alt="Logo" href />
@@ -71,14 +71,18 @@
 
                     </div>
                 </li>
-                <li class="nav-item my-auto">
-                    <form class="d-flex form-inline mx-auto">
+
+                <li class="nav-item my-auto col-3">
+                    <form class="d-flex form-inline mx-auto" action="searchresult.php" method="POST"
+                        id="form_navsearch">
+
                         <input class="form-control me-5 rounded-pill" type="search" placeholder="Quick Search"
-                            aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i>
+                            aria-label="Search" name="nav-search" id="nav-search"><i class="fas fa-search"
+                            aria-hidden="true"></i>
 
                     </form>
                 </li>
-                <li class="nav-item my-auto">
+                <li class="nav-item my-auto col-3">
                     <a class="nav-link" href="advsearch.php">Advanced Search</a>
                 </li>
 
@@ -93,6 +97,4 @@
     </header>
 
     <?php
-   $value = $_POST['searchinput'];
-   echo "I got your value! $value";
 ?>
