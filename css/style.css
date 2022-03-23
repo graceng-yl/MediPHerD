@@ -1,13 +1,11 @@
-
-:root {
-  --c_fontwhite: rgb(255, 255, 255);
-  --c_fontblack: #2e2e2e;
-  --c_white: #f5f5f5;
-  --c_darkgreen: rgb(109, 137, 99);
-  --c_lightgrey: #efefef;
-  --c_grey: #e0e4df;
-  --c_darkgrey: #c4c4c4;
-
+:root{
+  --c_fontwhite: #ffffff; 
+  --c_fontblack: #2E2E2E;
+  --c_white: #F5F5F5;
+  --c_darkgreen: #6d8963;
+  --c_lgihtgrey: #EFEFEF;
+  --c_grey: #E0E4DF; 
+  --c_darkgrey: #C4C4C4;
 
   --font_xlarge: 60px;
   --font_large: 36px;
@@ -15,7 +13,7 @@
   --font_small: 22px;
   /* --font_xsmall: 18px; */
 
-  --font: "Roboto", sans-serif;
+  --font: 'Roboto', sans-serif;
 }
 
 /* *{
@@ -34,18 +32,38 @@ h5{
   font-size: var(--font_small);
 } */
 
-/*
-    CSS for Navigation bar
-*/
-.navbar-nav > li.active > a {
-  color: var(--c_darkgrey);
-}
-.navbar-nav > li > a {
-  color: var(--c_fontwhite);
+.container-pendy {
+  width: 98%;
+  margin: 0 auto;
+  padding: 1%;
+  border: 1px solid black;
 }
 
-.navbar-nav > li > a:hover {
-  color: var(--c_darkgrey);
+.text-center {
+  text-align: center;
+}
+
+.toright {
+  float: right;
+  border: 1px solid black;
+}
+
+.clearfix {
+  clear: both;
+  float: none;
 }
 
 /*CSS for navbar*/
+.menu {
+  line-height: 60px;
+}
+
+.menu ul {
+  list-style-type: none;
+}
+
+.menu ul li {
+  display: inline;
+  padding: 1%;
+  font-weight: bold;
+}
