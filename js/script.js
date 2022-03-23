@@ -46,3 +46,26 @@ jQuery(document).ready(function(){
 // window.onbeforeunload = function(){
 // 	localStorage.setItem('advs_state', jQuery("#advs_form").html());
 // }
+
+/*
+					SIMPLE SEARCH
+*/
+//press 'enter' key to initiate the simple search
+$(document).on("keypress", "input", function (e) {
+  if (e.which == 13 && $(this).val() != "") {
+    if ($(this).val()) {
+      // if some words are entered by user, proceed to POST them to searchresult.php
+      if (document.getElementById("nav-search").value != "") {
+        //navigation bar search
+        document.forms.form_navsearch.submit();
+      }
+      if (document.getElementById("homepage-search").value != "") {
+        // homepage search
+        document.forms.form_homepagesearch.submit();
+      }
+    }
+  } else if (e.which == 13 && $(this).val() == "") {
+    // if no value entered, alert user
+    alert("You've entered: nothing");
+  }
+});
