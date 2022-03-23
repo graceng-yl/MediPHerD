@@ -1,4 +1,3 @@
-
 :root {
   --c_fontwhite: rgb(255, 255, 255);
   --c_fontblack: #2e2e2e;
@@ -7,7 +6,6 @@
   --c_lightgrey: #efefef;
   --c_grey: #e0e4df;
   --c_darkgrey: #c4c4c4;
-
 
   --font_xlarge: 60px;
   --font_large: 36px;
@@ -48,4 +46,35 @@ h5{
   color: var(--c_darkgrey);
 }
 
-/*CSS for navbar*/
+/*CSS for images album*/
+/* .album {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imgContainer {
+  max-width: 100%;
+  max-height: 100%;
+  /*overflow: hidden;
+}
+
+.imgContainer img {
+  width: 100%;
+  min-height: 100%;
+  padding-right: 10%;
+  border-radius: 10%;
+} */
+
+.img-center {
+  text-align: center;
+  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 2px 3px 0 rgba(0, 0, 0, 0.1);
+}
+/* .row {
+  display: flex;
+  margin: auto;
+} */

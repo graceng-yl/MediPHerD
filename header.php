@@ -44,13 +44,13 @@
     <header>
         <nav class="navbar navbar-expand-lg justify-content-between" style="background-color: var(--c_darkgreen);">
             <ul class="navbar-nav mx-auto">
-                <li class="nav-item my-auto col-2">
+                <li class="nav-item my-auto col-1">
                     <a class="nav-link active" href="index.php">Home</a>
                 </li>
-                <li class="nav-item my-auto col-3">
+                <li class="nav-item my-auto col-4 col-md-offset-2">
                     <a class="nav-link" href="browse.php">Browse Database</a>
                 </li>
-                <li class="nav-item my-auto col-4">
+                <li class="nav-item my-auto col-5">
                     <div class="mx-auto order-0">
                         <a class="navbar-brand" href="index.php">
                             <img src="www/logo.png" alt="Logo" href />

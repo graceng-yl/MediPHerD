@@ -31,8 +31,60 @@ include('header.php');
         </div>
 
     </div>
-    <!-- <div class="input-box"> <input type="text" class="form-control"> <i class="fa fa-search"></i> </div> -->
 
+    <!-- <div class="row">
+        <div class="col-md-4 col-md-offset-1">
+            <img class="img-responsive" src="www/Naga_Buana.jpg" />
+        </div>
+        <div class="col-md-4">
+            <img class="img-responsive" src="www/Rosa.jfif" />
+        </div>
+
+        <div class="col-md-4 h-100">
+            <img class="img-responsive" src="www/Belalai_Gajah.jpg" />
+        </div>
+
+    </div> -->
+
+    <!-- <div class="album">
+        <div class="imgContainer">
+            <div class="row mt-3">
+                <div class="col px-2">
+                    <img src="www/Belalai_Gajah.jpg">
+                </div>
+                <div class="col px-2">
+                    <img src="www/Halia_Bara.jpg">
+                </div>
+                <div class="col px-2">
+                    <img src="www/Rosa.jfif">
+                </div>
+            </div>
+
+
+        </div>
+    </div> -->
+
+    <div class="container">
+        <div class="row mx-auto justify-content-center">
+            <div class="col-sm-12 col-md-3 mx-2">
+                <img class="img-fluid img-center" src="www/Belalai_Gajah.jpg" />
+                <div class="caption">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, quisquam?</p>
+                </div>
+
+            </div>
+            <div class="col-sm-12 col-md-3 mx-2">
+                <img class="img-fluid img-center" src="www/Rosa.jfif" />
+
+            </div>
+            <div class="col-sm-12 col-md-3 mx-2">
+                <img class="img-fluid img-center" src="www/Halia_Bara.jpg" />
+
+            </div>
+        </div>
+
+
+    </div>
 </div>
 
 
