@@ -144,14 +144,14 @@ include('header.php');
             $searchvalue = $_POST['nav-search'];
             $query = "SELECT * FROM plants WHERE plant_id IN (SELECT plant_id from materials, materials_relation WHERE materials.mat_id=materials_relation.mat_id AND mat_desc LIKE '%" . $searchvalue . "%') OR plants.plant_species LIKE '%" . $searchvalue . "%' OR plants.plant_id LIKE '%" . $searchvalue . "%' OR plants.plant_name LIKE '%" . $searchvalue ."%' OR plants.plant_othernames LIKE '%" . $searchvalue . "%' OR plants.plant_family LIKE '%" . $searchvalue . "%' OR plants.plant_genus LIKE '%" . $searchvalue . "%' OR plants.plant_species LIKE '%"  . $searchvalue . "%' OR plants.plant_chemconst LIKE '%" . $searchvalue . "%' OR plants.plant_usage LIKE '%" . $searchvalue . "%'";
             $searchString = $searchvalue." [ALL, contains]";
-            $searchHist = $searchvalue.";ALL;contains;";
+            $searchHist = "contains;ALL;".$searchvalue;
         }
         // simple search on homepage section
         elseif(isset($_POST['homepage-search'])){ 
             $searchvalue = $_POST['homepage-search'];
             $query = "SELECT * FROM plants WHERE plant_id IN (SELECT plant_id from materials, materials_relation WHERE materials.mat_id=materials_relation.mat_id AND mat_desc LIKE '%" . $searchvalue . "%') OR plants.plant_species LIKE '%" . $searchvalue . "%' OR plants.plant_id LIKE '%" . $searchvalue . "%' OR plants.plant_name LIKE '%" . $searchvalue ."%' OR plants.plant_othernames LIKE '%" . $searchvalue . "%' OR plants.plant_family LIKE '%" . $searchvalue . "%' OR plants.plant_genus LIKE '%" . $searchvalue . "%' OR plants.plant_species LIKE '%"  . $searchvalue . "%' OR plants.plant_chemconst LIKE '%" . $searchvalue . "%' OR plants.plant_usage LIKE '%" . $searchvalue . "%'";
             $searchString = $searchvalue." [ALL, contains]";
-            $searchHist = $searchvalue.";ALL;contains;";
+            $searchHist = "contains;ALL;".$searchvalue;
         }
 
         // $history = array($searchString, $query);
