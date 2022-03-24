@@ -42,12 +42,109 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg justify-content-between" style="background-color: var(--c_darkgreen);">
+        <nav class="navbar navbar-expand-md justify-content-center" style="background-color: var(--c_darkgreen);">
+            <!-- <div class="collapse navbar-collapse justify-content-center" id="navbarToggle">
+
+                <ul class="navbar-nav">
+                    <li class="nav-item pe-5">
+                        <a class="nav-link active " href="#">Home </a>
+                    </li>
+                    <li class="nav-item pe-5">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                </ul>
+
+
+              
+            <a class="navbar-brand d-none d-lg-block" href="#">Navbar</a>
+
+
+
+            <ul class="navbar-nav">
+                <li class="nav-item ps-auto">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item ps-5">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+
+            </ul>
+            </div> -->
+            <!-- <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Left</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="//codeply.com">Codeply</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="mx-auto order-0">
+                <a class="navbar-brand mx-auto" href="#">Navbar 2</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Right</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                </ul>
+            </div> -->
+            <!-- <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Left</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="//codeply.com">Codeply</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="mx-auto order-0">
+                <a class="navbar-brand mx-auto" href="#">Navbar 2</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Right</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                </ul>
+            </div> -->
             <ul class="navbar-nav mx-auto">
-                <li class="nav-item my-auto col-1">
+                <li class="nav-item my-auto col-1 me-5 ml-auto">
                     <a class="nav-link active" href="index.php">Home</a>
                 </li>
-                <li class="nav-item my-auto col-4 col-md-offset-2">
+                <li class="nav-item my-auto col-4 col-md-offset-2 ps-4">
                     <a class="nav-link" href="browse.php">Browse Database</a>
                 </li>
                 <li class="nav-item my-auto col-5">

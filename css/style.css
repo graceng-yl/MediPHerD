@@ -16,6 +16,25 @@
   --font: "Roboto", sans-serif;
 }
 
+/* $spacers: (
+    0: 0,
+    1: (
+      $spacer * 0.25,
+    ),
+    2: (
+      $spacer * 0.5,
+    ),
+    3: $spacer,
+    4: (
+      $spacer * 1.5,
+    ),
+    5: (
+      $spacer * 3,
+    ),
+    6: (
+      $spacer * 5,
+    ),
+  ) */
 /* *{
   font-family: var(--font);
 }
@@ -31,7 +50,6 @@ h4{
 h5{
   font-size: var(--font_small);
 } */
-
 /*
     CSS for Navigation bar
 */
@@ -44,6 +62,16 @@ h5{
 
 .navbar-nav > li > a:hover {
   color: var(--c_darkgrey);
+}
+
+@media (min-width: 768px) {
+  .navbar-brand.abs {
+    position: absolute;
+    width: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
 }
 
 /*CSS for images album*/
@@ -78,3 +106,76 @@ h5{
   display: flex;
   margin: auto;
 } */
+
+/*Hover Effect for Images*/
+.col-md-3 {
+  width: 30%;
+  height: 50%;
+}
+
+.hover {
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 60%;
+}
+
+.hover-overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 90;
+  transition: all 0.4s;
+}
+
+.hover img {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.3s;
+}
+
+.hover-content {
+  position: relative;
+  z-index: 99;
+}
+
+.hover-1 .hover-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1));
+}
+
+.hover-1-title {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  z-index: 99;
+  transition: all 0.3s;
+}
+
+.hover-1-description {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  opacity: 0;
+  left: 0;
+  text-align: center;
+  z-index: 99;
+  transition: all 0.3s;
+}
+
+.hover-1:hover .hover-1-title {
+  transform: translateY(-1.5rem);
+}
+
+.hover-1:hover .hover-1-description {
+  bottom: 0.5rem;
+  opacity: 1;
+}
+
+.hover-1:hover .hover-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1));
+}
