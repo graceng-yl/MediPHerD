@@ -18,7 +18,7 @@
     <title>MediPHerD - Malaysian Medicinal Plants and Herbs Database</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="icon" href=""> -->
+    <link rel="icon" href="www/icon.png">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>-->
@@ -43,36 +43,34 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg justify-content-between">
-            <div class="container">    
-                <!-- <ul class="navbar-nav mx-auto"> -->
-                    <div class="nav-item my-auto col-2">
-                        <a class="nav-link active" href="index.php">Home</a>
-                    </div>
+            <div class="container">
 
-                    <div class="nav-item my-auto col-2">
-                        <a class="nav-link" href="browse.php">Browse Database</a>
-                    </div>
+                <div class="nav-item my-auto col-2">
+                    <a class="nav-link active" href="index.php">Home</a>
+                </div>
 
-                    <div class="nav-item my-auto col-3">
-                        <div class="mx-auto order-0">
-                            <a class="navbar-brand" href="index.php">
-                                <img src="www/logo.png" alt="Logo" href />
-                            </a>
-                        </div>
-                    </div>
+                <div class="nav-item my-auto col-2">
+                    <a class="nav-link" href="browse.php">Browse Database</a>
+                </div>
 
-                    <div class="nav-item my-auto col-2">
-                        <form class="mx-auto" action="searchresult.php" method="POST" id="form_navsearch">
-                            <input class="me-5" type="search" placeholder="Quick Search" aria-label="Search" name="nav-search" id="nav-search"><i class="fas fa-search" aria-hidden="true"></i>
-                        </form>
+                <div class="nav-item my-auto col-3">
+                    <div class="mx-auto order-0">
+                        <a class="navbar-brand" href="index.php">
+                            <img src="www/logo.png" alt="Logo" href />
+                        </a>
                     </div>
+                </div>
 
-                    <div class="nav-item my-auto col-2">
-                        <a class="nav-link" href="advsearch.php">Advanced Search</a>
-                    </div>
-                <!-- </ul> -->
+                <div class="nav-item my-auto col-2">
+                    <form class="mx-auto" action="searchresult.php" method="POST" id="form_navsearch">
+                        <input class="me-5" type="search" placeholder="Quick Search" aria-label="Search"
+                            name="nav-search" id="nav-search"><i class="fas fa-search" aria-hidden="true"></i>
+                    </form>
+                </div>
+
+                <div class="nav-item my-auto col-2">
+                    <a class="nav-link" href="advsearch.php">Advanced Search</a>
+                </div>
             </div>
         </nav>
     </header>
-
-

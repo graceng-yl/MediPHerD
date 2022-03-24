@@ -24,14 +24,65 @@ include('header.php');
 
     <div class="container d-flex justify-content-center align-items-center py-5">
         <div style="text-align:justify;width: 60%;">
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda odio illo, officia temporibus cumque
-                nobis ipsa repellat commodi facilis aliquid totam eius, reprehenderit aut incidunt iste ea iure,
-                suscipit
-                ipsum.</p>
+            <p>Malaysian medicinal plants and herbs database system, a system that provide medical information of
+                medical plants in Malaysia. This system aims to help public in understanding and exploring Malaysia
+                plant toxicity and protect human and animals from natural poisons.</p>
         </div>
 
     </div>
-    <!-- <div class="input-box"> <input type="text" class="form-control"> <i class="fa fa-search"></i> </div> -->
+
+    <div class="container">
+        <div class="row mx-auto justify-content-center">
+
+            <div class="col-sm-12 col-md-3 mx-2">
+                <div class="hover hover-1 text-white">
+                    <img class="img-fluid img-center" src="www/Belalai_Gajah.jpg" />
+                    <div class="hover-overlay"></div>
+                    <div class="hover-1-content px-5 py-4">
+                        <h3 class="hover-1-title text-uppercase font-weight-bold mb-1">Belalai Gajah</h3>
+                        <p class="hover-1-description  mb-0">Treat cancer, inflammation and various skin
+                            problems
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-sm-12 col-md-3 mx-2">
+                <div class="hover hover-1 text-white">
+                    <img class="img-fluid img-center" src="www/Bunga_Telang.jpg" />
+                    <div class="hover-overlay"></div>
+                    <div class="hover-1-content px-5 py-4">
+                        <h3 class="hover-1-title text-uppercase font-weight-bold mb-1">Bunga Telang</h3>
+                        <p class="hover-1-description mb-0">Promote memory and inteligence, cure insect
+                            bites, skin diseases, eye infections
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-sm-12 col-md-3 mx-2">
+                <div class="hover hover-1 text-white">
+                    <img class="img-fluid img-center" src="www/Halia_Bara.jpg" />
+                    <div class="hover-overlay"></div>
+                    <div class="hover-1-content px-5 py-4">
+                        <h3 class="hover-1-title text-uppercase font-weight-bold mb-1">Halia Bara</h3>
+                        <p class="hover-1-description  mb-0">Treat stomach discomfort, tumours, and
+                            relieve
+                            rheumatic pains
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
 
 </div>
 

@@ -5,7 +5,8 @@ include('header.php');
 <div class="container page_content">
     <div class="page_top">
         <h1 class="page_title">Advanced Search</h1>
-        <p class="page_desc">Customize your search here by specificing the fields and matching criteria of your queries</p>
+        <p class="page_desc">Customize your search here by specifying the fields and matching criteria of your queries
+        </p>
     </div>
 
     <form method="post" action="searchresult.php" id="advs_form">
@@ -40,9 +41,13 @@ include('header.php');
                     </select>
                 </td>
                 <td><input name="advs_query[]" type="text" placeholder="Search query" required></td>
-                <td><div class="advs_button advs_removequery" id="advs_removequery_1">&#8722;</div></td>
-                <td><div class="advs_button advs_addquery" id="advs_addquery_1">&#43;</div></td>
-                
+                <td>
+                    <div class="advs_button advs_removequery" id="advs_removequery_1">&#8722;</div>
+                </td>
+                <td>
+                    <div class="advs_button advs_addquery" id="advs_addquery_1">&#43;</div>
+                </td>
+
             </tr>
         </table>
         <div class="advs_form_tail">
@@ -59,7 +64,7 @@ include('header.php');
         <h2 class="subsection_title">Search History</h2>
         <div class="search_histories">
             <p>Find your 30 days search records here, click to edit the search queries.</p>
-<?php
+            <?php
             if(isset($_COOKIE['search_history'])){
                 foreach(array_reverse($_COOKIE['search_history']) as $history){
                     echo "<p class='search_history'>".$history."</p>";
