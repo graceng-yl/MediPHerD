@@ -13,11 +13,12 @@ include('header.php');
 
     <div class="row height d-flex justify-content-center align-items-center">
         <div class="col-md-3 ">
-            <div class="search "> <i class="fa fa-search "></i> <input type="text" class="form-control rounded-pill"
-                    placeholder="Search">
+            <form class="d-flex form-inline mx-auto" action="searchresult.php" method="POST" id="form_homepagesearch">
 
-                <!-- <button class="btn btn-primary">Search</button>  -->
-            </div>
+                <input class="form-control rounded-pill" type="search" placeholder="Tongkat Ali" aria-label="Search"
+                    name="homepage-search" id="homepage-search"><i class="fas fa-search" aria-hidden="true"></i>
+
+            </form>
         </div>
     </div>
 

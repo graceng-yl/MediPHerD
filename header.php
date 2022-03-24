@@ -37,33 +37,20 @@
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <script>
-    //press 'enter' key to initiate the simple search
-    $(document).on("keypress", "input", function(e) {
-        if (e.which == 13 && $(this).val() != "") {
-            var inputVal = $(this).val();
-            //alert("You've entered: " + inputVal);
-            $.post('header.php', 'searchinput=' + inputVal, function(response) {
-                alert(response);
-            });
-        } else if (e.which == 13 && $(this).val() == "") {
-            alert("You've entered: nothing");
-        }
-    });
-    </script>
+
 </head>
 
 <body>
     <header>
         <nav class="navbar navbar-expand-lg justify-content-between" style="background-color: var(--c_darkgreen);">
-            <ul class="navbar-nav mx-auto ">
-                <li class="nav-item my-auto">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item my-auto col-2">
                     <a class="nav-link active" href="index.php">Home</a>
                 </li>
-                <li class="nav-item my-auto">
+                <li class="nav-item my-auto col-3">
                     <a class="nav-link" href="browse.php">Browse Database</a>
                 </li>
-                <li class="nav-item my-auto">
+                <li class="nav-item my-auto col-4">
                     <div class="mx-auto order-0">
                         <a class="navbar-brand" href="index.php">
                             <img src="www/logo.png" alt="Logo" href />
@@ -71,14 +58,18 @@
 
                     </div>
                 </li>
-                <li class="nav-item my-auto">
-                    <form class="d-flex form-inline mx-auto">
+
+                <li class="nav-item my-auto col-3">
+                    <form class="d-flex form-inline mx-auto" action="searchresult.php" method="POST"
+                        id="form_navsearch">
+
                         <input class="form-control me-5 rounded-pill" type="search" placeholder="Quick Search"
-                            aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i>
+                            aria-label="Search" name="nav-search" id="nav-search"><i class="fas fa-search"
+                            aria-hidden="true"></i>
 
                     </form>
                 </li>
-                <li class="nav-item my-auto">
+                <li class="nav-item my-auto col-3">
                     <a class="nav-link" href="advsearch.php">Advanced Search</a>
                 </li>
 
@@ -93,6 +84,5 @@
     </header>
 
     <?php
-//    $value = $_POST['searchinput'];
-//    echo "I got your value! $value";
 ?>
+

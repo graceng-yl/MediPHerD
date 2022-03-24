@@ -5,9 +5,11 @@ include('header.php');
 <div class="container">
 
 <?php
+     $query = "";
     //fetching advanced search result 
+if(isset($_POST['advs_query'])){
     $queryCount = 0;
-    $query = "";
+   
     foreach($_POST['advs_query'] as $searchQuery){ //in all advanced search rows
         //before each query
         if($queryCount == 0){
@@ -100,20 +102,44 @@ include('header.php');
         }
         $queryCount++; // go to next searched row
     }
+    
+    
     // end the sql query
     $query .= ";";
-    echo $query."<br>";
+}
+    
+    //simple search on navigation bar
+if(isset($_POST['nav-search'])){
+    $searchvalue = $_POST['nav-search'];
+    $query = "SELECT * FROM plants WHERE plant_id IN (SELECT plant_id from materials, materials_relation WHERE materials.mat_id=materials_relation.mat_id AND mat_desc LIKE '%" . $searchvalue . "BARK%') OR plants.plant_species LIKE '%" . $searchvalue . "%' OR plants.plant_id LIKE '%" . $searchvalue . "%' OR plants.plant_name LIKE '%" . $searchvalue ."%' OR plants.plant_othernames LIKE '%" . $searchvalue . "%' OR plants.plant_family LIKE '%" . $searchvalue . "%' OR plants.plant_genus LIKE '%" . $searchvalue . "%' OR plants.plant_species LIKE '%"  . $searchvalue . "%' OR plants.plant_chemconst LIKE '%" . $searchvalue . "%' OR plants.plant_usage LIKE '%" . $searchvalue . "%'";
 
+}else if(isset($_POST['homepage-search'])){ // simple search on homepage section
+    $searchvalue = $_POST['homepage-search'];
+    $query = "SELECT * FROM plants WHERE plant_id IN (SELECT plant_id from materials, materials_relation WHERE materials.mat_id=materials_relation.mat_id AND mat_desc LIKE '%" . $searchvalue . "BARK%') OR plants.plant_species LIKE '%" . $searchvalue . "%' OR plants.plant_id LIKE '%" . $searchvalue . "%' OR plants.plant_name LIKE '%" . $searchvalue ."%' OR plants.plant_othernames LIKE '%" . $searchvalue . "%' OR plants.plant_family LIKE '%" . $searchvalue . "%' OR plants.plant_genus LIKE '%" . $searchvalue . "%' OR plants.plant_species LIKE '%"  . $searchvalue . "%' OR plants.plant_chemconst LIKE '%" . $searchvalue . "%' OR plants.plant_usage LIKE '%" . $searchvalue . "%'";
+
+}
+    
+//check query content
+//if there is query, send it to database to get result
+if($query !=""){
+    //echo $query."<br>";
     //get result from query, return error if failed
     if(!($result = mysqli_query($conn, $query))){
         echo "<p>Could not execute query</p>";
-        die(mysqli_error($conn)."</body></html>");
+        die(mysqli_error($conn)."</body.</html>");
     }
 
+    // Return the number of rows in result set
+    $rowcount=mysqli_num_rows($result);
+    echo "<br>". $rowcount . " records found for '" . $searchvalue . "'";
+
     while($row = mysqli_fetch_assoc($result)){
-        //test display
-        echo $row['plant_name']."<br>";
-    }
+        //test display, to display particular plant_othernames according to search query, use the name stored in $matches_array perhaps?
+      echo $row['plant_name']."<br>";
+}
+}else{
+    //print error message
+}
 ?>
 
 </div>
