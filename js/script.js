@@ -22,18 +22,19 @@ jQuery(document).ready(function(){
 
 		//click on clear
 		jQuery(document).on("click", "#advs_clear", function(){
-			remove_searchrow();
+			var rowNum = jQuery(".advs_row").length;
+			for (var i=0; i<rowNum-1; i++){ //remove all rows except first one
+				remove_searchrow();
+			}
 		});
 
 		//click on any search history
 		jQuery(document).on("click", ".search_history", function(){
-			var queries = jQuery(this).html().split(";");
-			for(var i=0; i<queries.length; i++){
-				
-			}
-			var queryNum = Math.floor(queries.length / 3);
-			var rowNum = jQuery(".advs_row").length;
+			var queryNum = jQuery(this).html().split(";;").length;
+			console.log(queryNum);
+			var queries = jQuery(this).html().replace(";;", ";").split(";");
 			console.log(queries);
+			var rowNum = jQuery(".advs_row").length;
 
 			//create corresponding number of rows to the clicked history
 			for (var i=0; i<rowNum-1; i++){ //remove all rows except first one
@@ -46,13 +47,13 @@ jQuery(document).ready(function(){
 			//insert values into the input fields
 			var row = 1;
 			for(var i=0; i<queries.length; i=i+4){
-				//console.log(i-1, queries[i-1], i, queries[i], i+1, queries[i+1], i+2, queries[i+2]);
+				console.log(i-1, queries[i-1], i, queries[i], i+1, queries[i+1], i+2, queries[i+2]);
 				if(i>0){
 					jQuery("#advs_row_"+(row)+" select[name='advs_operator[]']").val(queries[i-1].toLowerCase());
 				}
-				jQuery("#advs_row_"+(row)+" input[name='advs_query[]']").val(queries[i]);
+				jQuery("#advs_row_"+(row)+" select[name='advs_matching_criterion[]']").val(queries[i]);
 				jQuery("#advs_row_"+(row)+" select[name='advs_field[]']").val(queries[i+1]);
-				jQuery("#advs_row_"+(row)+" select[name='advs_matching_criterion[]']").val(queries[i+2]);
+				jQuery("#advs_row_"+(row)+" input[name='advs_query[]']").val(queries[i+2]);
 				row++;
 			}
 			jQuery(window).scrollTop(jQuery('.page_title').offset().top); //scroll to top

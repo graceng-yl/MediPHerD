@@ -77,6 +77,19 @@ body {
   border: var(--c_darkgrey) solid 1px;
 }
 
+/* footer */
+.footer{
+	background-color: var(--c_darkgreen);
+	font-size: var(--font_small);
+	color: var(--c_white);
+	padding: 50px 0;
+}
+.footer p{
+	margin: 0;
+}
+.footer_text{
+	padding: 10px 0;
+}
 /*Advanced search*/
 #advs {
   margin-left: auto;

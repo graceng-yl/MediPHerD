@@ -25,15 +25,15 @@ include('header.php');
                     if($_POST['advs_operator'][$queryCount]=='or'){
                         $query .= " OR ";
                         $searchString .= " OR ";
-                        $searchHist .= "OR;";
+                        $searchHist .= ";;OR;";
                     }elseif($_POST['advs_operator'][$queryCount]=='and'){
                         $query .= " AND ";
                         $searchString .= " AND ";
-                        $searchHist .= "OR;";
+                        $searchHist .= ";;OR;";
                     }elseif($_POST['advs_operator'][$queryCount]=='not'){
                         $query .= " AND NOT ";
                         $searchString .= " NOT ";
-                        $searchHist .= "NOT;";
+                        $searchHist .= ";;NOT;";
                     }
                 }
 
@@ -130,7 +130,7 @@ include('header.php');
                     $query .= ")";
                 }
                 $searchString .= $_POST['advs_query'][$queryCount]." [".$_POST['advs_field'][$queryCount].", ".$_POST['advs_matching_criterion'][$queryCount]."]";
-                $searchHist .= $_POST['advs_query'][$queryCount].";".$_POST['advs_field'][$queryCount].";".$_POST['advs_matching_criterion'][$queryCount].";";
+                $searchHist .= $_POST['advs_matching_criterion'][$queryCount].";".$_POST['advs_field'][$queryCount].";".$_POST['advs_query'][$queryCount];
 
                 $queryCount++; // go to next searched row
             }
