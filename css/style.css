@@ -41,16 +41,42 @@ body{
 
 
 /*CSS for Navigation bar*/
-.navbar-nav > li.active > a {
-	color: var(--c_darkgrey);
+.navbar{
+	padding: 2px 0;
 }
-.navbar-nav > li > a {
+.navbar div > a {
 	color: var(--c_fontwhite);
+	text-align: center;
+	margin: 0;
+	font-size: var(--font_small);
 }
-.navbar-nav > li > a:hover {
+.navbar div.active > a {
 	color: var(--c_darkgrey);
 }
-
+.navbar div > a:hover {
+	color: var(--c_darkgrey);
+}
+.navbar{
+	background-color: var(--c_darkgreen);
+}
+.navbar img{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	height: 70px;
+}
+#nav-search{
+	outline: 0;
+	width: 100%;
+	border-radius: 20px;
+	padding: 5px 20px;
+	border: var(--c_darkgrey) solid 1px;
+	font-size: var(--font_small);
+}
+#nav-search:focus{
+	outline: 0;
+	border: var(--c_darkgrey) solid 1px;
+}
 
 /*Advanced search*/
 #advs{
