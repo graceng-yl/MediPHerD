@@ -3,7 +3,7 @@ include('header.php');
 ?>
 
 <div class="container page_content">
-    <div class="advs_page_top">
+    <div class="page_top">
         <h1 class="page_title">Advanced Search</h1>
         <p class="page_desc">Customize your search here by specificing the fields and matching criteria of your queries</p>
     </div>
@@ -20,10 +20,10 @@ include('header.php');
                 </td>
                 <td>
                     <select name="advs_matching_criterion[]">
-                        <option value="=">EXACT</option>
-                        <option value="LIKE">CONTAINS</option>
-                        <option value="START">START WITH</option>
-                        <option value="END">END WITH</option>
+                        <option value="exact">EXACT</option>
+                        <option value="contains">CONTAINS</option>
+                        <option value="start">START WITH</option>
+                        <option value="end">END WITH</option>
                     </select>
                 </td>
                 <td>
@@ -44,7 +44,14 @@ include('header.php');
                 
             </tr>
         </table>
-        <input type="submit" id="advs_submit">
+        <div class="advs_form_tail">
+            <div class="advs_form_tail_col">
+                <input type="submit" id="advs_submit">
+            </div>
+            <div class="advs_form_tail_col">
+                <input type="reset" value="Clear" id="advs_clear">
+            </div>
+        </div>
     </form>
 </div>
 
