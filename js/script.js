@@ -22,7 +22,10 @@ jQuery(document).ready(function(){
 
 		//click on clear
 		jQuery(document).on("click", "#advs_clear", function(){
-			remove_searchrow();
+			var rowNum = jQuery(".advs_row").length;
+			for (var i=0; i<rowNum-1; i++){ //remove all rows except first one
+				remove_searchrow();
+			}
 		});
 
 		//click on any search history
