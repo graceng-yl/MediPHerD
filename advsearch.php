@@ -2,8 +2,11 @@
 include('header.php');
 ?>
 
-<div class="container">
-    <h1>Advanced Search</h1>
+<div class="container page_content">
+    <div class="advs_page_top">
+        <h1 class="page_title">Advanced Search</h1>
+        <p class="page_desc">Customize your search here by specificing the fields and matching criteria of your queries</p>
+    </div>
 
     <form method="post" action="searchresult.php" id="advs_form">
         <table id="advs">
@@ -35,13 +38,13 @@ include('header.php');
                         <option value="plant_chemconst">Chemical constituent</option>
                     </select>
                 </td>
-                <td><input name="advs_query[]" type="text"></td>
-                <td><div class="advs_removequery" id="advs_removequery_1">-</div></td>
-                <td><div class="advs_addquery" id="advs_addquery_1">+</div></td>
+                <td><input name="advs_query[]" type="text" placeholder="Search query"></td>
+                <td><div class="advs_button advs_removequery" id="advs_removequery_1">&#8722;</div></td>
+                <td><div class="advs_button advs_addquery" id="advs_addquery_1">&#43;</div></td>
                 
             </tr>
         </table>
-        <input type="submit">
+        <input type="submit" id="advs_submit">
     </form>
 </div>
 

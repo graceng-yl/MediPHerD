@@ -93,6 +93,6 @@
     </header>
 
     <?php
-   $value = $_POST['searchinput'];
-   echo "I got your value! $value";
+//    $value = $_POST['searchinput'];
+//    echo "I got your value! $value";
 ?>
