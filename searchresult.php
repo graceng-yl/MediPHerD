@@ -8,12 +8,13 @@ include('header.php');
 
 <?php
         $query = "";
+        $searchString = "";
+        $searchHist = "";
 
         //advanced search result 
         if(isset($_POST['advs_query'])){
             $queryCount = 0;
-            $searchvalue = "";
-
+            
             foreach($_POST['advs_query'] as $searchQuery){ //in all advanced search rows
                 //before each query
                 if($queryCount == 0){
@@ -23,13 +24,16 @@ include('header.php');
                     // queries other than first one, add corresponding operator
                     if($_POST['advs_operator'][$queryCount]=='or'){
                         $query .= " OR ";
-                        $searchvalue .= " OR ";
+                        $searchString .= " OR ";
+                        $searchHist .= "OR;";
                     }elseif($_POST['advs_operator'][$queryCount]=='and'){
                         $query .= " AND ";
-                        $searchvalue .= " AND ";
+                        $searchString .= " AND ";
+                        $searchHist .= "OR;";
                     }elseif($_POST['advs_operator'][$queryCount]=='not'){
-                        $query .= " NOT ";
-                        $searchvalue .= " NOT ";
+                        $query .= " AND NOT ";
+                        $searchString .= " NOT ";
+                        $searchHist .= "NOT;";
                     }
                 }
 
@@ -41,20 +45,38 @@ include('header.php');
                 if($_POST['advs_field'][$queryCount]=='mat_desc'){
                     // if field is material, get plant_id from the inner joined materials tables
                     $query .= "plant_id IN (SELECT plant_id from materials, materials_relation WHERE materials.mat_id=materials_relation.mat_id AND mat_desc";
-                }else{
+                }elseif($_POST['advs_field'][$queryCount]=='ALL'){
+                    // if field is all, do ntg
+                    $query .= "";
+                }
+                else{
                     // other fields, use only the field searched
                     $query .= $_POST['advs_field'][$queryCount];
                 }
 
-                // followed by the corresponding matching criteria and query to search
-                if($_POST['advs_matching_criterion'][$queryCount]=='exact'){
-                    $query .= "='".$_POST['advs_query'][$queryCount]."' ";
-                }elseif($_POST['advs_matching_criterion'][$queryCount]=='contains'){
-                    $query .= " LIKE '%".$_POST['advs_query'][$queryCount]."%' ";
-                }elseif($_POST['advs_matching_criterion'][$queryCount]=='start'){
-                    $query .= " LIKE '".$_POST['advs_query'][$queryCount]."%' ";
-                }elseif($_POST['advs_matching_criterion'][$queryCount]=='end'){
-                    $query .= " LIKE '%".$_POST['advs_query'][$queryCount]."' ";
+                if($_POST['advs_field'][$queryCount]!='ALL'){
+                    // if not all fields, add the corresponding matching criteria and query to search
+                    if($_POST['advs_matching_criterion'][$queryCount]=='exact'){
+                        $query .= "='".$_POST['advs_query'][$queryCount]."' ";
+                    }elseif($_POST['advs_matching_criterion'][$queryCount]=='contains'){
+                        $query .= " LIKE '%".$_POST['advs_query'][$queryCount]."%' ";
+                    }elseif($_POST['advs_matching_criterion'][$queryCount]=='start'){
+                        $query .= " LIKE '".$_POST['advs_query'][$queryCount]."%' ";
+                    }elseif($_POST['advs_matching_criterion'][$queryCount]=='end'){
+                        $query .= " LIKE '%".$_POST['advs_query'][$queryCount]."' ";
+                    }
+                }else{
+                    //if all fields, add sql query to search in all columns
+                    if($_POST['advs_matching_criterion'][$queryCount]=='exact'){
+                        $query .= "(plant_id IN (SELECT plant_id from materials, materials_relation WHERE materials.mat_id=materials_relation.mat_id AND mat_desc='".$_POST['advs_query'][$queryCount]."') OR plant_id='".$_POST['advs_query'][$queryCount]."' OR plant_name='" .$_POST['advs_query'][$queryCount]."' OR plant_othernames='".$_POST['advs_query'][$queryCount]."' OR plant_family='".$_POST['advs_query'][$queryCount]."' OR plant_genus='".$_POST['advs_query'][$queryCount]."' OR plant_species='".$_POST['advs_query'][$queryCount]."' OR plant_chemconst='".$_POST['advs_query'][$queryCount]."' OR plant_usage='".$_POST['advs_query'][$queryCount]."')";
+                    }elseif($_POST['advs_matching_criterion'][$queryCount]=='contains'){
+                        $query .= "(plant_id IN (SELECT plant_id from materials, materials_relation WHERE materials.mat_id=materials_relation.mat_id AND mat_desc LIKE '%".$_POST['advs_query'][$queryCount]."%') OR plant_id LIKE '%".$_POST['advs_query'][$queryCount]."%' OR plant_name LIKE '%".$_POST['advs_query'][$queryCount]."%' OR plant_othernames LIKE '%".$_POST['advs_query'][$queryCount]."%' OR plant_family LIKE '%".$_POST['advs_query'][$queryCount]."%' OR plant_genus LIKE '%".$_POST['advs_query'][$queryCount]."%' OR plant_species LIKE '%".$_POST['advs_query'][$queryCount]."%' OR plant_chemconst LIKE '%".$_POST['advs_query'][$queryCount]."%' OR plant_usage LIKE '%".$_POST['advs_query'][$queryCount]."%')";
+                    }elseif($_POST['advs_matching_criterion'][$queryCount]=='start'){
+                        $query .= "(plant_id IN (SELECT plant_id from materials, materials_relation WHERE materials.mat_id=materials_relation.mat_id AND mat_desc LIKE '".$_POST['advs_query'][$queryCount]."%') OR plant_id LIKE '".$_POST['advs_query'][$queryCount]."%' OR plant_name LIKE '".$_POST['advs_query'][$queryCount]."%' OR plant_othernames LIKE '".$_POST['advs_query'][$queryCount]."%' OR plant_family LIKE '".$_POST['advs_query'][$queryCount]."%' OR plant_genus LIKE '".$_POST['advs_query'][$queryCount]."%' OR plant_species LIKE '".$_POST['advs_query'][$queryCount]."%' OR plant_chemconst LIKE '".$_POST['advs_query'][$queryCount]."%' OR plant_usage LIKE '".$_POST['advs_query'][$queryCount]."%')";
+                    }elseif($_POST['advs_matching_criterion'][$queryCount]=='end'){
+                        $query .= "(plant_id IN (SELECT plant_id from materials, materials_relation WHERE materials.mat_id=materials_relation.mat_id AND mat_desc LIKE '%".$_POST['advs_query'][$queryCount]."') OR plant_id LIKE '%".$_POST['advs_query'][$queryCount]."' OR plant_name LIKE '%".$_POST['advs_query'][$queryCount]."' OR plant_othernames LIKE '%".$_POST['advs_query'][$queryCount]."' OR plant_family LIKE '%".$_POST['advs_query'][$queryCount]."' OR plant_genus LIKE '%".$_POST['advs_query'][$queryCount]."' OR plant_species LIKE '%".$_POST['advs_query'][$queryCount]."' OR plant_chemconst LIKE '%".$_POST['advs_query'][$queryCount]."' OR plant_usage LIKE '%".$_POST['advs_query'][$queryCount]."')";
+                    }
+                    
                 }
 
                 // check again if search field is material description, add the closing bracket
@@ -107,7 +129,9 @@ include('header.php');
                     // close the bracket for plant name searched field
                     $query .= ")";
                 }
-                $searchvalue .= $_POST['advs_query'][$queryCount]." [".$_POST['advs_field'][$queryCount].", ".$_POST['advs_matching_criterion'][$queryCount]."]";
+                $searchString .= $_POST['advs_query'][$queryCount]." [".$_POST['advs_field'][$queryCount].", ".$_POST['advs_matching_criterion'][$queryCount]."]";
+                $searchHist .= $_POST['advs_query'][$queryCount].";".$_POST['advs_field'][$queryCount].";".$_POST['advs_matching_criterion'][$queryCount].";";
+
                 $queryCount++; // go to next searched row
             }
             // end the sql query
@@ -118,14 +142,25 @@ include('header.php');
         //simple search on navigation bar
         elseif(isset($_POST['nav-search'])){
             $searchvalue = $_POST['nav-search'];
-            $query = "SELECT * FROM plants WHERE plant_id IN (SELECT plant_id from materials, materials_relation WHERE materials.mat_id=materials_relation.mat_id AND mat_desc LIKE '%" . $searchvalue . "BARK%') OR plants.plant_species LIKE '%" . $searchvalue . "%' OR plants.plant_id LIKE '%" . $searchvalue . "%' OR plants.plant_name LIKE '%" . $searchvalue ."%' OR plants.plant_othernames LIKE '%" . $searchvalue . "%' OR plants.plant_family LIKE '%" . $searchvalue . "%' OR plants.plant_genus LIKE '%" . $searchvalue . "%' OR plants.plant_species LIKE '%"  . $searchvalue . "%' OR plants.plant_chemconst LIKE '%" . $searchvalue . "%' OR plants.plant_usage LIKE '%" . $searchvalue . "%'";
+            $query = "SELECT * FROM plants WHERE plant_id IN (SELECT plant_id from materials, materials_relation WHERE materials.mat_id=materials_relation.mat_id AND mat_desc LIKE '%" . $searchvalue . "%') OR plants.plant_species LIKE '%" . $searchvalue . "%' OR plants.plant_id LIKE '%" . $searchvalue . "%' OR plants.plant_name LIKE '%" . $searchvalue ."%' OR plants.plant_othernames LIKE '%" . $searchvalue . "%' OR plants.plant_family LIKE '%" . $searchvalue . "%' OR plants.plant_genus LIKE '%" . $searchvalue . "%' OR plants.plant_species LIKE '%"  . $searchvalue . "%' OR plants.plant_chemconst LIKE '%" . $searchvalue . "%' OR plants.plant_usage LIKE '%" . $searchvalue . "%'";
+            $searchString = $searchvalue." [ALL, contains]";
+            $searchHist = $searchvalue.";ALL;contains;";
         }
         // simple search on homepage section
         elseif(isset($_POST['homepage-search'])){ 
             $searchvalue = $_POST['homepage-search'];
-            $query = "SELECT * FROM plants WHERE plant_id IN (SELECT plant_id from materials, materials_relation WHERE materials.mat_id=materials_relation.mat_id AND mat_desc LIKE '%" . $searchvalue . "BARK%') OR plants.plant_species LIKE '%" . $searchvalue . "%' OR plants.plant_id LIKE '%" . $searchvalue . "%' OR plants.plant_name LIKE '%" . $searchvalue ."%' OR plants.plant_othernames LIKE '%" . $searchvalue . "%' OR plants.plant_family LIKE '%" . $searchvalue . "%' OR plants.plant_genus LIKE '%" . $searchvalue . "%' OR plants.plant_species LIKE '%"  . $searchvalue . "%' OR plants.plant_chemconst LIKE '%" . $searchvalue . "%' OR plants.plant_usage LIKE '%" . $searchvalue . "%'";
+            $query = "SELECT * FROM plants WHERE plant_id IN (SELECT plant_id from materials, materials_relation WHERE materials.mat_id=materials_relation.mat_id AND mat_desc LIKE '%" . $searchvalue . "%') OR plants.plant_species LIKE '%" . $searchvalue . "%' OR plants.plant_id LIKE '%" . $searchvalue . "%' OR plants.plant_name LIKE '%" . $searchvalue ."%' OR plants.plant_othernames LIKE '%" . $searchvalue . "%' OR plants.plant_family LIKE '%" . $searchvalue . "%' OR plants.plant_genus LIKE '%" . $searchvalue . "%' OR plants.plant_species LIKE '%"  . $searchvalue . "%' OR plants.plant_chemconst LIKE '%" . $searchvalue . "%' OR plants.plant_usage LIKE '%" . $searchvalue . "%'";
+            $searchString = $searchvalue." [ALL, contains]";
+            $searchHist = $searchvalue.";ALL;contains;";
         }
-            
+
+        // $history = array($searchString, $query);
+        if(isset($_COOKIE['search_history'])){
+            setcookie('search_history['.count($_COOKIE['search_history']).']', $searchHist, time()+60*60*24*30);
+        }else{
+            setcookie('search_history[0]', $searchHist, time()+60*60*24*30);
+        }
+        
         //check query content
         //if there is query, send it to database to get result
         if($query !=""){
@@ -138,7 +173,7 @@ include('header.php');
 
             // Return the number of rows in result set
             $rowcount=mysqli_num_rows($result);
-            echo "<p class='page_desc'>". $rowcount . " records found for '" . $searchvalue . "'</p>";
+            echo "<p class='page_desc'>". $rowcount . " records found for '" . $searchString . "'</p>";
 
             while($row = mysqli_fetch_assoc($result)){
                 // TEST DISPLAY

@@ -20,14 +20,15 @@ include('header.php');
                 </td>
                 <td>
                     <select name="advs_matching_criterion[]">
-                        <option value="exact">EXACT</option>
                         <option value="contains">CONTAINS</option>
+                        <option value="exact">EXACT</option>
                         <option value="start">START WITH</option>
                         <option value="end">END WITH</option>
                     </select>
                 </td>
                 <td>
                     <select name="advs_field[]">
+                        <option value="ALL">All fields</option>
                         <option value="plant_id">ID</option>
                         <option value="plant_name">Name</option>
                         <option value="plant_family">Family</option>
@@ -38,7 +39,7 @@ include('header.php');
                         <option value="plant_chemconst">Chemical constituent</option>
                     </select>
                 </td>
-                <td><input name="advs_query[]" type="text" placeholder="Search query"></td>
+                <td><input name="advs_query[]" type="text" placeholder="Search query" required></td>
                 <td><div class="advs_button advs_removequery" id="advs_removequery_1">&#8722;</div></td>
                 <td><div class="advs_button advs_addquery" id="advs_addquery_1">&#43;</div></td>
                 
@@ -53,6 +54,20 @@ include('header.php');
             </div>
         </div>
     </form>
+
+    <div class="history_section">
+        <h2 class="subsection_title">Search History</h2>
+        <div class="search_histories">
+            <p>Find your 30 days search records here, click to edit the search queries.</p>
+<?php
+            if(isset($_COOKIE['search_history'])){
+                foreach(array_reverse($_COOKIE['search_history']) as $history){
+                    echo "<p class='search_history'>".$history."</p>";
+                }
+            }
+?>
+        </div>
+    </div>
 </div>
 
 <?php

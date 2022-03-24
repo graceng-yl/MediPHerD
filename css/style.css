@@ -10,7 +10,7 @@
 
 	--font_xlarge: 60px;
 	--font_large: 36px;
-	--font_medium: 24px;
+	--font_medium: 22px;
 	--font_small: 14px;
 	/* --font_xsmall: 18px; */
 
@@ -109,5 +109,30 @@ select[name='advs_operator[]']{
 	display: inline-block;
 	width: 48%;
 }
-
-
+.history_section{
+	margin-top: 50px;
+}
+.search_histories{
+	padding: 10px 20px;
+}
+.subsection_title{
+	font-size: var(--font_medium);
+	background-color: var(--c_darkgreen);
+	color: var(--c_fontwhite);
+	padding: 8px 20px;
+	border-radius: 15px;
+}
+.search_history{
+	margin: 0;
+	cursor: pointer;
+	transition: 0.2s;
+	font-size: var(--font_small);
+}
+.search_history:hover{
+	color: var(--c_darkgreen);
+}
+.search_histories p:not(.search_history){
+	font-weight: bold;
+	font-size: var(--font_small);
+	font-style: italic;
+}
