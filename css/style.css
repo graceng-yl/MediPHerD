@@ -263,3 +263,41 @@ select[name="advs_operator[]"] {
 .hover-1:hover .hover-overlay {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1));
 }
+
+/*entry page*/
+#ep {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+#ep_titl {
+  font-size: var(--font_large);	
+}
+#eptd {
+  font-weight: normal
+}
+#cat_d {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+#cat_gap {
+  column-gap: 40px;
+}
+#col_text {
+  font-style: italic;
+  font-size: 
+}
+#ept {
+  font-style: italic;
+  font-size: 
+}
+.subsection_title {
+  font-size: var(--font_medium);
+  background-color: var(--c_darkgreen);
+  color: var(--c_fontwhite);
+  padding: 8px 20px;
+  border-radius: 15px;
+}
+.column {
+  float: left;
+  width: 50%;
+}
