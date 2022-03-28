@@ -12,7 +12,6 @@ $keywords_result = mysqli_query($conn, $keywords_query) or die(mysqli_error($con
 
 ?>
 
-<?php
 <style>
 table, th, td {
   border-collapse: collapse;
@@ -47,18 +46,18 @@ th, td {
 						</tr>
 						<tr>
 							<th id="eptd" scope="col">Plant Family: <br />
-							<em><b><?= $plant["plant_family"] ?></em><b></th>
-						</tr>						
-						<tr>
-							<th id="eptd" scope="col">Material: <br />
-								<b><button id="family"><?php while ($material = mysqli_fetch_assoc($materials_result)) { ?>
-									<?= $material["mat_desc"] ?>
-								<?php } ?></button></b>
-							/*	<script type="text/javascript">
+							<em><b><button id="family"><?= $plant["plant_family"] ?></button></em><b></th>
+								/*<script type="text/javascript">
 									document.getElementById("family").onclick = function () {
 										location.href = "localhost/MediPHerD-main/entry.php?plant=[plant_id]";
 									};
-								</script>		*/						
+								</script>*/
+						</tr>						
+						<tr>
+							<th id="eptd" scope="col">Material: <br />
+								<b><?php while ($material = mysqli_fetch_assoc($materials_result)) { ?>
+									<?= $material["mat_desc"] ?>
+								<?php } ?></b>						
 							</th>
 						</tr>
 						<tr>
