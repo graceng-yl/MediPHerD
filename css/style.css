@@ -181,6 +181,7 @@ select[name="advs_operator[]"] {
   font-style: italic;
 }
 
+
 /*Homepage*/
 .img-center {
   text-align: center;
@@ -190,19 +191,16 @@ select[name="advs_operator[]"] {
   background-color: white;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 2px 3px 0 rgba(0, 0, 0, 0.1);
 }
-
 /*Hover Effect for Images*/
 .col-md-3 {
   width: 30%;
   height: 50%;
 }
-
 .hover {
   overflow: hidden;
   position: relative;
   padding-bottom: 60%;
 }
-
 .hover-overlay {
   width: 100%;
   height: 100%;
@@ -212,7 +210,6 @@ select[name="advs_operator[]"] {
   z-index: 90;
   transition: all 0.4s;
 }
-
 .hover img {
   width: 100%;
   position: absolute;
@@ -220,16 +217,13 @@ select[name="advs_operator[]"] {
   left: 0;
   transition: all 0.3s;
 }
-
 .hover-content {
   position: relative;
   z-index: 99;
 }
-
 .hover-1 .hover-overlay {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1));
 }
-
 .hover-1-title {
   position: absolute;
   top: 50%;
@@ -239,7 +233,6 @@ select[name="advs_operator[]"] {
   z-index: 99;
   transition: all 0.3s;
 }
-
 .hover-1-description {
   width: 100%;
   position: absolute;
@@ -250,19 +243,17 @@ select[name="advs_operator[]"] {
   z-index: 99;
   transition: all 0.3s;
 }
-
 .hover-1:hover .hover-1-title {
   transform: translateY(-1.5rem);
 }
-
 .hover-1:hover .hover-1-description {
   bottom: 0.5rem;
   opacity: 1;
 }
-
 .hover-1:hover .hover-overlay {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1));
 }
+
 
 /*entry page*/
 #ep {
@@ -284,11 +275,9 @@ select[name="advs_operator[]"] {
 }
 #col_text {
   font-style: italic;
-  font-size: 
 }
 #ept {
   font-style: italic;
-  font-size: 
 }
 .subsection_title {
   font-size: var(--font_medium);
@@ -300,4 +289,47 @@ select[name="advs_operator[]"] {
 .column {
   float: left;
   width: 50%;
+}
+
+
+/* browse and result table */
+
+.plant_table tr{
+	font-size: var(--font_small);
+}
+.plant_table thead tr{
+	background-color: var(--c_darkgreen);
+	color: var(--c_fontwhite);
+}
+.plant_table tbody tr{
+	background-color: var(--c_lightgrey) !important;
+	transition: 0.3s;
+
+}
+.plant_table tbody tr:hover{
+	background-color: var(--c_grey) !important;
+	cursor: pointer;
+}
+.plant_table_top .dataTables_info, .plant_table_top .dataTables_paginate{
+	margin-bottom: 10px;
+}
+.dataTables_info{
+	font-size: var(--font_small);
+}
+.dataTables_paginate{
+	font-size: var(--font_small);
+}
+.paginate_button{
+	background: var(--c_fontwhite);
+	border-radius: 20px;
+	border: none;
+	transition: 0.3s;
+}
+.paginate_button:hover{
+	background: var(--c_darkgrey) !important;
+	color: var(--c_fontblack) !important;
+}
+.paginate_button.current{
+	background: var(--c_darkgreen) !important;
+	color: var(--c_fontwhite) !important;
 }

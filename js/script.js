@@ -1,5 +1,24 @@
 jQuery(document).ready(function(){
 
+	jQuery(".plant_table").DataTable({
+        "lengthMenu": [[10, 20, -1], [10, 20, "All"]],
+		"columnDefs": [
+			{ orderable: false, targets: 4 },
+			{ orderable: true, targets: '_all' },
+        ], 
+		"paging": true,
+        "ordering": true,
+        "info": true,
+		"searching": false,
+		"pagingType": "full_numbers",
+		"dom": '<"plant_table_top"ip>t<"plant_table_bottom"ip>'
+	});
+
+	//llink table to entry page
+	jQuery(document).on("click", ".plant_table tbody tr", function(){
+		window.location.href = 'entry.php?plant='+jQuery(this).attr('id');
+	});
+
 	// ADVANCED SEARCH
 	if(window.location.href.indexOf("advsearch.php") > -1){
 		// if(localStorage.getItem('advs_state') !== null){
