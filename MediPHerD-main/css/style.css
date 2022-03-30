@@ -1,0 +1,336 @@
+:root {
+  --c_fontwhite: #ffffff;
+  --c_fontblack: #2e2e2e;
+  --c_white: #f5f5f5;
+  --c_darkgreen: #6d8963;
+  --c_darkgreen_hover: #54694c;
+  --c_lightgrey: #efefef;
+  --c_grey: #e0e4df;
+  --c_darkgrey: #c4c4c4;
+
+  --font_xlarge: 60px;
+  --font_large: 36px;
+  --font_medium: 22px;
+  --font_small: 14px;
+  /* --font_xsmall: 18px; */
+
+  --font: "Roboto", sans-serif;
+}
+
+/* all pages */
+* {
+  font-family: var(--font);
+}
+body {
+  background-color: var(--c_white);
+}
+.page_content {
+  padding: 50px 0;
+}
+.page_top {
+  margin-bottom: 50px;
+}
+.page_title {
+  text-align: center;
+  font-size: var(--font_large);
+}
+.page_desc {
+  text-align: center;
+  font-size: var(--font_small);
+}
+
+/*CSS for Navigation bar*/
+.navbar {
+  padding: 2px 0;
+}
+.navbar div > a {
+  color: var(--c_fontwhite);
+  text-align: center;
+  margin: 0;
+  font-size: var(--font_small);
+}
+.navbar div.active > a {
+  color: var(--c_darkgrey);
+}
+.navbar div > a:hover {
+  color: var(--c_darkgrey);
+}
+.navbar {
+  background-color: var(--c_darkgreen);
+}
+.navbar img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 70px;
+}
+#nav-search {
+  outline: 0;
+  width: 100%;
+  border-radius: 20px;
+  padding: 5px 20px;
+  border: var(--c_darkgrey) solid 1px;
+  font-size: var(--font_small);
+}
+#nav-search:focus {
+  outline: 0;
+  border: var(--c_darkgrey) solid 1px;
+}
+
+/* footer */
+.footer{
+	background-color: var(--c_darkgreen);
+	font-size: var(--font_small);
+	color: var(--c_white);
+	padding: 50px 0;
+}
+.footer p{
+	margin: 0;
+}
+.footer_text{
+	padding: 10px 0;
+}
+/*Advanced search*/
+#advs {
+  margin-left: auto;
+  margin-right: auto;
+}
+.advs_button {
+  background-color: var(--c_darkgreen);
+  color: var(--c_fontwhite);
+  padding: 0 8px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: 0.5s;
+}
+.advs_removequery {
+  background-color: var(--c_grey);
+  color: #797979;
+  font-weight: bold;
+}
+.advs_addquery:hover,
+#advs_submit:hover {
+  background-color: var(--c_darkgreen_hover);
+}
+.advs_removequery:hover,
+#advs_clear:hover {
+  background-color: var(--c_darkgrey);
+}
+#advs select,
+#advs input,
+#advs_submit,
+#advs_clear {
+  border: var(--c_grey) solid 1px;
+  padding: 3px 10px;
+  border-radius: 10px;
+  height: 40px;
+  transition: 0.5s;
+  font-size: var(--font_small);
+}
+#advs select {
+  cursor: pointer;
+}
+select[name="advs_operator[]"] {
+  background-color: var(--c_grey);
+}
+#advs select:focus,
+#advs input:focus {
+  outline: none;
+  border: var(--c_darkgrey) solid 1px;
+}
+#advs_submit {
+  background-color: var(--c_darkgreen);
+  color: var(--c_fontwhite);
+  float: right;
+}
+#advs_clear {
+  float: left;
+}
+.advs_form_tail {
+  margin: 30px auto 0 auto;
+}
+.advs_form_tail_col {
+  display: inline-block;
+  width: 48%;
+}
+.history_section {
+  margin-top: 50px;
+}
+.search_histories {
+  padding: 10px 20px;
+}
+.subsection_title {
+  font-size: var(--font_medium);
+  background-color: var(--c_darkgreen);
+  color: var(--c_fontwhite);
+  padding: 8px 20px;
+  border-radius: 15px;
+}
+.search_history {
+  margin: 0;
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: var(--font_small);
+}
+.search_history:hover {
+  color: var(--c_darkgreen);
+}
+.search_histories p:not(.search_history) {
+  font-weight: bold;
+  font-size: var(--font_small);
+  font-style: italic;
+}
+
+
+/*Homepage*/
+.img-center {
+  text-align: center;
+  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 2px 3px 0 rgba(0, 0, 0, 0.1);
+}
+/*Hover Effect for Images*/
+.col-md-3 {
+  width: 30%;
+  height: 50%;
+}
+.hover {
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 60%;
+}
+.hover-overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 90;
+  transition: all 0.4s;
+}
+.hover img {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.3s;
+}
+.hover-content {
+  position: relative;
+  z-index: 99;
+}
+.hover-1 .hover-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1));
+}
+.hover-1-title {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  z-index: 99;
+  transition: all 0.3s;
+}
+.hover-1-description {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  opacity: 0;
+  left: 0;
+  text-align: center;
+  z-index: 99;
+  transition: all 0.3s;
+}
+.hover-1:hover .hover-1-title {
+  transform: translateY(-1.5rem);
+}
+.hover-1:hover .hover-1-description {
+  bottom: 0.5rem;
+  opacity: 1;
+}
+.hover-1:hover .hover-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1));
+}
+
+
+/*entry page*/
+
+#ep {
+  margin-left: 200px !important;
+  margin-right: 200px !important;
+}
+#ep_titl {
+  font-size: var(--font_large);	
+}
+#eptd {
+  font-weight: normal !important;
+}
+#cat_d {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+#cat_gap {
+  column-gap: 40px;
+}
+#col_text {
+  font-style: italic;
+}
+#ept {
+  font-style: italic;
+}
+.subsection_title {
+  font-size: var(--font_medium);
+  background-color: var(--c_darkgreen);
+  color: var(--c_fontwhite);
+  padding: 8px 20px;
+  border-radius: 15px;
+}
+.column {
+  float: left;
+  width: 50%;
+}
+
+
+/* browse and result table */
+
+.plant_table tr{
+	font-size: var(--font_small);
+}
+.plant_table thead tr{
+	background-color: var(--c_darkgreen);
+	color: var(--c_fontwhite);
+}
+.plant_table tbody tr{
+	background-color: var(--c_lightgrey) !important;
+	transition: 0.3s;
+
+}
+.plant_table tbody tr:hover{
+	background-color: var(--c_grey) !important;
+	cursor: pointer;
+}
+.plant_table_top .dataTables_info, .plant_table_top .dataTables_paginate{
+	margin-bottom: 10px;
+}
+.dataTables_info{
+	font-size: var(--font_small);
+}
+.dataTables_paginate{
+	font-size: var(--font_small);
+}
+.paginate_button{
+	background: var(--c_fontwhite);
+	border-radius: 20px;
+	border: none;
+	transition: 0.3s;
+}
+.paginate_button:hover{
+	background: var(--c_darkgrey) !important;
+	color: var(--c_fontblack) !important;
+}
+.paginate_button.current{
+	background: var(--c_darkgreen) !important;
+	color: var(--c_fontwhite) !important;
+}
