@@ -175,10 +175,32 @@ include('header.php');
             $rowcount=mysqli_num_rows($result);
             echo "<p class='page_desc'>". $rowcount . " records found for '" . $searchString . "'</p>";
 
-            while($row = mysqli_fetch_assoc($result)){
-                // TEST DISPLAY
-                echo $row['plant_name']."<br>";
-            }
+?>
+            <table class="plant_table">
+                <thead>
+                    <tr><th>ID</th><th>Scientific Name</th><th>Family</th><th>Common Name</th><th>Usage</th></tr>
+                </thead>
+                <tbody>
+<?php
+                    while($row = mysqli_fetch_assoc($result)){
+?>
+                        <tr id="<?php echo $row['plant_id']; ?>">
+                            <td><?php echo $row['plant_id']; ?></td>
+                            <td><i><?php echo $row['plant_genus']." ".$row['plant_species']; ?></i></td>
+                            <td><?php echo $row['plant_family']; ?></td>
+                            <td><?php echo $row['plant_name'].", ".$row['plant_othernames']; ?></td>
+                            <td><?php echo preg_replace('/((\w+\W*){'.(20-1).'}(\w+))(.*)/', '${1}...', $row['plant_usage']); ?></td>
+                        </tr>
+<?php
+                    }
+?>
+                </tbody>
+            </table>
+<?php
+            // while($row = mysqli_fetch_assoc($result)){
+            //     // TEST DISPLAY
+            //     echo $row['plant_name']."<br>";
+            // }
         }else{
             //print no search query found message
         }
