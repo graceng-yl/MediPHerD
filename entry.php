@@ -2,6 +2,21 @@
 
 <?php
 
+/*$plants_query = "SELECT * FROM plants WHERE plant_id = '" . $plant_id . "';";
+if(!($plants_result = mysqli_query($conn, $query))){
+    echo "<p>Could not execute query</p>";
+    die(mysqli_error($conn)."</body.</html>");
+
+$materials_query = "SELECT * FROM materials WHERE materials.mat_id IN (SELECT materials_relation.mat_id FROM materials_relation WHERE materials_relation.plant_id = '" . $plant_id . "')";
+if(!($plants_result = mysqli_query($conn, $query))){
+    echo "<p>Could not execute query</p>";
+    die(mysqli_error($conn)."</body.</html>");
+
+$keywords_query = "SELECT * FROM keywords WHERE keywords.keyw_id IN (SELECT keywords_relation.keyw_id FROM keywords_relation WHERE keywords_relation.plant_id = '" . $plant_id . "')";
+if(!($plants_result = mysqli_query($conn, $query))){
+    echo "<p>Could not execute query</p>";
+    die(mysqli_error($conn)."</body.</html>");*/
+
 $plants_query = "SELECT * FROM plants WHERE plant_id = 'P001'";
 $materials_query = "SELECT * FROM materials WHERE materials.mat_id IN (SELECT materials_relation.mat_id FROM materials_relation WHERE materials_relation.plant_id = 'P001')";
 $keywords_query = "SELECT * FROM keywords WHERE keywords.keyw_id IN (SELECT keywords_relation.keyw_id FROM keywords_relation WHERE keywords_relation.plant_id = 'P001')";
@@ -17,7 +32,7 @@ table, th, td {
   border-collapse: collapse;
 }
 th, td {
-  padding-top: 10px;
+  padding-top: 10px !important;
   padding-bottom: 5px;
   padding-left: 30px;
   padding-right: 30px;
@@ -25,8 +40,8 @@ th, td {
 </style>
 
 <?php while ($plant = mysqli_fetch_assoc($plants_result)) { ?>
-<div class="container py-5" id="ep">
-	<div class="page_top" id="ep">
+<div class="mx-auto" style= "width:1500px;">
+	<div class="page_top" style="padding-top:50px" id="ep">
 	<table>
 		<h1 class="page_title" id="ep_titl"><?= $plant["plant_name"] ?><h1>
 		<h2 class="page_desc" id="eptd"><?= $plant["plant_othernames"] ?></h2>
@@ -45,13 +60,9 @@ th, td {
 							<em><b><?= $plant["plant_genus"] ?> <?= $plant["plant_species"] ?></em></b></th>
 						</tr>
 						<tr>
+						
 							<th id="eptd" scope="col">Plant Family: <br />
-							<em><b><button id="family"><?= $plant["plant_family"] ?></button></em><b></th>
-								/*<script type="text/javascript">
-									document.getElementById("family").onclick = function () {
-										location.href = "localhost/MediPHerD-main/entry.php?plant=[plant_id]";
-									};
-								</script>*/
+							<b><?= $plant["plant_family"] ?><b></th>
 						</tr>						
 						<tr>
 							<th id="eptd" scope="col">Material: <br />

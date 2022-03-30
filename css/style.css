@@ -256,15 +256,16 @@ select[name="advs_operator[]"] {
 
 
 /*entry page*/
+
 #ep {
-  margin-left: 100px;
-  margin-right: 100px;
+  margin-left: 200px !important;
+  margin-right: 200px !important;
 }
 #ep_titl {
   font-size: var(--font_large);	
 }
 #eptd {
-  font-weight: normal
+  font-weight: normal !important;
 }
 #cat_d {
   margin-left: 25px;
