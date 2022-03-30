@@ -1,7 +1,7 @@
 <?php include('header.php'); ?>
 
 <?php
-
+$plant_id = $_GET['plant'];
 /*$plants_query = "SELECT * FROM plants WHERE plant_id = '" . $plant_id . "';";
 if(!($plants_result = mysqli_query($conn, $query))){
     echo "<p>Could not execute query</p>";
@@ -16,10 +16,9 @@ $keywords_query = "SELECT * FROM keywords WHERE keywords.keyw_id IN (SELECT keyw
 if(!($plants_result = mysqli_query($conn, $query))){
     echo "<p>Could not execute query</p>";
     die(mysqli_error($conn)."</body.</html>");*/
-
-$plants_query = "SELECT * FROM plants WHERE plant_id = 'P001'";
-$materials_query = "SELECT * FROM materials WHERE materials.mat_id IN (SELECT materials_relation.mat_id FROM materials_relation WHERE materials_relation.plant_id = 'P001')";
-$keywords_query = "SELECT * FROM keywords WHERE keywords.keyw_id IN (SELECT keywords_relation.keyw_id FROM keywords_relation WHERE keywords_relation.plant_id = 'P001')";
+$plants_query = "SELECT * FROM plants WHERE plant_id = '".$plant_id."'";
+$materials_query = "SELECT * FROM materials WHERE materials.mat_id IN (SELECT materials_relation.mat_id FROM materials_relation WHERE materials_relation.plant_id = '".$plant_id."')";
+$keywords_query = "SELECT * FROM keywords WHERE keywords.keyw_id IN (SELECT keywords_relation.keyw_id FROM keywords_relation WHERE keywords_relation.plant_id = '".$plant_id."')";
 
 $plants_result = mysqli_query($conn, $plants_query) or die(mysqli_error($conn));
 $materials_result = mysqli_query($conn, $materials_query) or die(mysqli_error($conn));
