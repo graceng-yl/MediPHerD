@@ -13,82 +13,68 @@ $keywords_result = mysqli_query($conn, $keywords_query) or die(mysqli_error($con
 
 ?>
 
-<style>
-table, th, td {
-  border-collapse: collapse;
-  align-self=: center;
-}
-th, td {
-  padding-top: 10px !important;
-  padding-bottom: 5px;
-  padding-left: 30px;
-  padding-right: 30px;
-}
-</style>
-
 <?php while ($plant = mysqli_fetch_assoc($plants_result)) { ?>
-	<div class="mx-auto" style= "width:1500px;">
+	<div class="container page_content">
 		<div class="page_top" id="epg">
-			<table>
-				<h1 class="page_title" id="ep_titl"><?= $plant["plant_name"] ?><h1>
-				<h2 class="page_desc" id="eptd"><?= $plant["plant_othernames"] ?></h2>
+			<h1 class="page_title" id=""><?= $plant["plant_name"] ?><h1>
+			<h2 class="page_desc" id="eptd"><?= $plant["plant_othernames"] ?></h2>
+		</div>
 
-				</br>
+		<table id="epf">
+			<tr>
+				<th>				
+					<img src="www/<?= $plant["plant_id"]?>.jpg" id="text" alt=<?=$plant["plant_name"] ?> height="300px" object-fit="scale-down"/>
+				</th>
+				<th>
+					<table>
+						<tr>
+							<th id="eptd" scope="col">Scientific Name: <br />
+							&nbsp&nbsp&nbsp<em><b><?= $plant["plant_genus"] ?> <?= $plant["plant_species"] ?></em></b></th>
+						</tr>
+						<tr>
+						
+							<th id="eptd" scope="col">Plant Family: <br />
+							&nbsp&nbsp&nbsp<b><?= $plant["plant_family"] ?><b></th>
+						</tr>						
+						<tr>
+							<th id="eptd" scope="col">Material of interest: <br />
+							&nbsp&nbsp&nbsp<b>
+								<?php while ($material = mysqli_fetch_assoc($materials_result)) { 
+									$materials[] = $material["mat_desc"];
+								}
+								?>
+								<?= join(", ", $materials) ?></b>					
+							</th>
+						</tr>
+						<tr>
+							<td>Keywords: <b>
+								<?php
+								$keywords = array();
+								while ($keyword = mysqli_fetch_assoc($keywords_result)) {
+									$keywords[] = $keyword["keyw_desc"];
+								}
+								?>
+								<?= join(", ", $keywords) ?></b>
+							</td>
+						</tr>
+					</table>
+				</th>
+			</tr>
+		</table>
+		
+		<div id="ep">
+			<h2 id="eptd" class="subsection_title">Usage</h2>
+			<div id= "cat_d"><p><?= $plant["plant_usage"] ?></p></div>
 
-				<table id="epf">
-					<tr padding= 15px>
-						<th>				
-							<img src="www/<?= $plant["plant_id"]?>.jpg" id="text" alt=<?=$plant["plant_name"] ?> height="300px" object-fit="scale-down"/>
-						</th>
-						<th>
-							<table>
-								<tr>
-									<th id="eptd" scope="col">Scientific Name: <br />
-									&nbsp&nbsp&nbsp<em><b><?= $plant["plant_genus"] ?> <?= $plant["plant_species"] ?></em></b></th>
-								</tr>
-								<tr>
-								
-									<th id="eptd" scope="col">Plant Family: <br />
-									&nbsp&nbsp&nbsp<b><?= $plant["plant_family"] ?><b></th>
-								</tr>						
-								<tr>
-									<th id="eptd" scope="col">Material: <br />
-									&nbsp&nbsp&nbsp<b><?php while ($material = mysqli_fetch_assoc($materials_result)) { ?>
-											<?= $material["mat_desc"] ?>
-										<?php } ?></b>						
-									</th>
-								</tr>
-								<tr>
-									<td colspan="2">
-										<?php
-										$keywords = array();
-										while ($keyword = mysqli_fetch_assoc($keywords_result)) {
-											$keywords[] = $keyword["keyw_desc"];
-										}
-										?>
-										<?= join(", ", $keywords) ?>
-									</td>
-								</tr>
-							</table>
-						</th>
-					</tr>
-				</table>
-				</div>
-				
-				<div id="ep">
-					<h2 id="eptd" class="subsection_title">Usage</h2>
-					<div id= "cat_d"><p><?= $plant["plant_usage"] ?></p></div>
+			<h2 id="eptd" class="subsection_title">Chemical Constituent</h2>
+			<div id= "cat_d"><p><?= $plant["plant_chemconst"] ?></p></div>
 
-					<h2 id="eptd" class="subsection_title">Chemical Constituent</h2>
-					<div id= "cat_d"><p><?= $plant["plant_chemconst"] ?></p></div>
-
-					<h2 id="eptd" class="subsection_title">References</h2>
-					<div id= "cat_d"><p><?= $plant["plant_refs"] ?></p></div>
-				</div><br/>
-				
-
-				
-			</table>
+			<h2 id="eptd" class="subsection_title">References</h2>
+			<div id= "cat_d">
+				<?php foreach(explode('-MEDIPHERD-', $plant["plant_refs"]) as $ref){ ?>
+				<p class='ref_item'><?php echo $ref; ?></p>
+				<?php } ?>
+			</div>
 		</div>
 	</div>   
 <?php } ?>

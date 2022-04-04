@@ -11,6 +11,7 @@ if(!($result = mysqli_query($conn, $query))){
 <div class="container page_content">
     <div class="page_top">
         <h1 class="page_title">Browse Database</h1>
+        <p class="page_desc">Collection of all deposited medicinal plants and herbs</p>
     </div>
 
     <table class="plant_table">

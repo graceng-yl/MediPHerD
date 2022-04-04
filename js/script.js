@@ -1,44 +1,39 @@
 jQuery(document).ready(function(){
 
-	jQuery(".plant_table").DataTable({
-        "lengthMenu": [[10, 20, -1], [10, 20, "All"]],
-		"columnDefs": [
-			{ orderable: false, targets: 4 },
-			{ orderable: true, targets: '_all' },
-        ], 
-		"paging": true,
-        "ordering": true,
-        "info": true,
-		"searching": false,
-		"pagingType": "full_numbers",
-		"dom": '<"plant_table_top"ip>t<"plant_table_bottom"ip>'
-	});
+	// if current page is browse or search result
+	if((window.location.href.indexOf("browse.php") > -1) || (window.location.href.indexOf("searchresult.php") > -1)){
+		jQuery(".plant_table").DataTable({
+			"lengthMenu": [[10, 20, -1], [10, 20, "All"]],
+			"columnDefs": [
+				{ orderable: false, targets: 4 },
+				{ orderable: true, targets: '_all' },
+			], 
+			"paging": true,
+			"ordering": true,
+			"info": true,
+			"searching": false,
+			"pagingType": "full_numbers",
+			"dom": '<"plant_table_top"ip>t<"plant_table_bottom"ip>'
+		});
+		//llink table to entry page
+		jQuery(document).on("click", ".plant_table tbody tr", function(){
+			window.location.href = 'entry.php?plant='+jQuery(this).attr('id');
+		});
+	}
 
-	//llink table to entry page
-	jQuery(document).on("click", ".plant_table tbody tr", function(){
-		window.location.href = 'entry.php?plant='+jQuery(this).attr('id');
-	});
-
-	// ADVANCED SEARCH
+	// if current page is advanced search
 	if(window.location.href.indexOf("advsearch.php") > -1){
-		// if(localStorage.getItem('advs_state') !== null){
-		// 	// jQuery('.advs').remove();
-		// 	document.getElementById('advs_form').innerHTML = localStorage.getItem('advs_state');
-		// }
 		//hide first row operator 
 		jQuery("#advs_operator_1").hide();
 		jQuery("#advs_removequery_1").hide();
-
 		//click on add
 		jQuery(document).on("click", ".advs_addquery", function(){
 			add_searchrow();
 		});
-
 		//click on remove
 		jQuery(document).on("click", ".advs_removequery", function(){
 			remove_searchrow();
 		});
-
 		//click on clear
 		jQuery(document).on("click", "#advs_clear", function(){
 			var rowNum = jQuery(".advs_row").length;
@@ -54,7 +49,6 @@ jQuery(document).ready(function(){
 			var queries = jQuery(this).html().replace(";;", ";").split(";");
 			console.log(queries);
 			var rowNum = jQuery(".advs_row").length;
-
 			//create corresponding number of rows to the clicked history
 			for (var i=0; i<rowNum-1; i++){ //remove all rows except first one
 				remove_searchrow();
@@ -62,7 +56,6 @@ jQuery(document).ready(function(){
 			for (var i=0; i<queryNum-1; i++){ //add rows until the number of queries searched for the clicked history
 				add_searchrow();
 			}
-			
 			//insert values into the input fields
 			var row = 1;
 			for(var i=0; i<queries.length; i=i+4){
@@ -77,19 +70,12 @@ jQuery(document).ready(function(){
 			}
 			jQuery(window).scrollTop(jQuery('.page_title').offset().top); //scroll to top
 		});
-
-		
 	}
 
 });
 
-// window.onbeforeunload = function(){
-// 	localStorage.setItem('advs_state', jQuery("#advs_form").html());
-// }
 
-/*
-					SIMPLE SEARCH
-*/
+// simple search on home and nav bar
 //press 'enter' key to initiate the simple search
 $(document).on("keypress", "input", function (e) {
   if (e.which == 13 && $(this).val() != "") {
@@ -111,6 +97,7 @@ $(document).on("keypress", "input", function (e) {
 });
 
 
+//add search query function for advanced search
 function add_searchrow(){
 	var prevId = jQuery(".advs_row").last().attr('id'); //prev row id
 	var prevNum = prevId.split('_')[2];
@@ -127,6 +114,7 @@ function add_searchrow(){
 
 	jQuery("input[name='advs_query[]']").last().val(""); //clear the input field content
 }
+//remove search query function for advanced search
 function remove_searchrow(){
 	var currId = jQuery(".advs_row").last().attr('id'); //curr row id
 	var prevNum = parseInt(currId.split('_')[2])-1;

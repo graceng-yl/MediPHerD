@@ -5,8 +5,7 @@ include('header.php');
 <div class="container page_content">
     <div class="page_top">
         <h1 class="page_title">Advanced Search</h1>
-        <p class="page_desc">Customize your search here by specifying the fields and matching criteria of your queries
-        </p>
+        <p class="page_desc">Customize your search here by specifying the fields and matching criteria of your queries</p>
     </div>
 
     <form method="post" action="searchresult.php" id="advs_form">
