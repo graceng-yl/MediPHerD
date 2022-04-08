@@ -209,6 +209,9 @@ body {
 .hover-1:hover .hover-overlay {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1));
 }
+.home_image{
+  cursor: pointer;
+}
 
 
 

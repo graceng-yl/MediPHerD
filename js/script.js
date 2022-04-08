@@ -1,5 +1,12 @@
 jQuery(document).ready(function(){
 
+	//if current page is home 
+	if(window.location.href.indexOf("index.php") > -1){
+		//link image to entry page
+		jQuery(document).on("click", ".home_image", function(){
+			window.location.href = 'entry.php?plant='+jQuery(this).attr('id');
+		});
+	}
 	// if current page is browse or search result
 	if((window.location.href.indexOf("browse.php") > -1) || (window.location.href.indexOf("searchresult.php") > -1)){
 		jQuery(".plant_table").DataTable({
@@ -15,7 +22,7 @@ jQuery(document).ready(function(){
 			"pagingType": "full_numbers",
 			"dom": '<"plant_table_top"ip>t<"plant_table_bottom"ip>'
 		});
-		//llink table to entry page
+		//link table to entry page
 		jQuery(document).on("click", ".plant_table tbody tr", function(){
 			window.location.href = 'entry.php?plant='+jQuery(this).attr('id');
 		});

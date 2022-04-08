@@ -1,5 +1,11 @@
 <?php
 include('header.php');
+// select randomly 3 plants
+$query = "SELECT * FROM plants ORDER BY RAND() LIMIT 3;";
+if(!($result = mysqli_query($conn, $query))){
+    echo "<p>Could not execute query</p>";
+    die(mysqli_error($conn)."</body.</html>");
+}
 ?>
 
 <div class="container py-5">
@@ -26,9 +32,7 @@ include('header.php');
 
         <div class="d-flex justify-content-center align-items-center py-5">
             <div class="home_about">
-                <p>Malaysian Medicinal Plants and Herbs Database (MediPHerD), a database that provide medical information of
-                    medical plants in Malaysia. This database aims to help public in understanding and exploring Malaysia
-                    plant toxicity and protect human and animals from natural poisons.</p>
+                <p>Malaysian Medicinal Plants and Herbs Database (MediPHerD), a database that provide medical information of medical plants in Malaysia. This database aims to help public in understanding and exploring Malaysia plant toxicity and protect human and animals from natural poisons.</p>
             </div>
 
         </div>
@@ -36,48 +40,23 @@ include('header.php');
 
     <div class="home_bottom">
         <div class="row mx-auto justify-content-center">
-
-            <div class="col-sm-12 col-md-3 mx-2">
-                <div class="hover hover-1 text-white">
-                    <img class="img-fluid img-center" src="www/P047.jpg" />
-                    <div class="hover-overlay"></div>
-                    <div class="hover-1-content px-5 py-4">
-                        <h3 class="hover-1-title text-uppercase font-weight-bold mb-1">Belalai Gajah</h3>
-                        <p class="hover-1-description  mb-0">Treat cancer, inflammation and various skin
-                            problems
-                        </p>
+<?php
+            while($row = mysqli_fetch_assoc($result)){
+?>
+                <div class="col-sm-12 col-md-3 mx-2 home_image" id="<?php echo $row['plant_id']; ?>">
+                    <div class="hover hover-1 text-white">
+                        <img class="img-fluid img-center" src=<?php echo "www/".$row['plant_id'].".jpg"; ?> />
+                        <div class="hover-overlay"></div>
+                        <div class="hover-1-content px-5 py-4">
+                            <h3 class="hover-1-title text-uppercase font-weight-bold mb-1"><?php echo $row['plant_name']; ?></h3>
+                            <p class="hover-1-description  mb-0"><?php echo preg_replace('/((\w+\W*){'.(10-1).'}(\w+))(.*)/', '${1}...', $row['plant_usage']); ?></p>
+                        </div>
                     </div>
                 </div>
-
-            </div>
-
-            <div class="col-sm-12 col-md-3 mx-2">
-                <div class="hover hover-1 text-white">
-                    <img class="img-fluid img-center" src="www/P056.jpg" />
-                    <div class="hover-overlay"></div>
-                    <div class="hover-1-content px-5 py-4">
-                        <h3 class="hover-1-title text-uppercase font-weight-bold mb-1">Bunga Telang</h3>
-                        <p class="hover-1-description mb-0">Promote memory and inteligence, cure insect
-                            bites, skin diseases, eye infections
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="col-sm-12 col-md-3 mx-2">
-                <div class="hover hover-1 text-white">
-                    <img class="img-fluid img-center" src="www/P052.jpg" />
-                    <div class="hover-overlay"></div>
-                    <div class="hover-1-content px-5 py-4">
-                        <h3 class="hover-1-title text-uppercase font-weight-bold mb-1">Halia Bara</h3>
-                        <p class="hover-1-description  mb-0">Treat stomach discomfort, tumours, and
-                            relieve
-                            rheumatic pains
-                        </p>
-                    </div>
-                </div>
-            </div>
+<?php
+            }
+?>
+            
         </div>
     </div>
 </div>
